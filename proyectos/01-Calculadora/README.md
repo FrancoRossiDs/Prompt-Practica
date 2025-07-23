@@ -88,8 +88,8 @@ El éxito en la generación de este proyecto demuestra mi capacidad para diseña
 
 ## ▶️ Cómo ejecutarlo
 
-    1. Asegúrate de tener la carpeta del proyecto 01-calculadora en tu sistema.
+1. Asegúrate de tener la carpeta del proyecto 01-calculadora en tu sistema.
 
-    2. Navega a la subcarpeta codebase/ (o la carpeta donde hayas colocado index.html, style.css, script.js).
+2. Navega a la subcarpeta codebase/ (o la carpeta donde hayas colocado index.html, style.css, script.js).
 
-    3. Abre el archivo index.html directamente en tu navegador web preferido. Puedes hacerlo arrastrando el archivo a la ventana del navegador o haciendo doble clic sobre él.
+3. Abre el archivo index.html directamente en tu navegador web preferido. Puedes hacerlo arrastrando el archivo a la ventana del navegador o haciendo doble clic sobre él.
