@@ -171,9 +171,3 @@ El éxito de este proyecto demuestra mi capacidad para:
 
 - **🌐 [Demo en Vivo](https://francorossids.github.io/Prompt-Practica/proyectos/01-Calculadora/)**
 - **📂 [Código Fuente](.)**
-
----
-
-**⭐ Si te gustó este proyecto, ¡dale una estrella al repositorio!**
-
-*Desarrollado con ❤️ usando Prompt Engineering y Arquitectura en Capas*
