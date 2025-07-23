@@ -7,110 +7,90 @@
 ---
 ## 🏗️ Arquitectura Implementada
 
-Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend, demostrando una clara separación de responsabilidades:
+Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend, demostrando una clara **separación de responsabilidades**:
 
 **Flujo de la Arquitectura:**
-```
 🎨 Capa de Presentación (HTML/CSS)
-    ↓
+    ↓
 ⚙️ Capa de Lógica de UI (JavaScript DOM)
-    ↓
+    ↓
 🧠 Capa de Negocio/Cálculo (JavaScript Puro)
-```
 
-**Beneficios de esta Arquitectura:**
-- ✅ **Mantenibilidad**: Cambios en una capa no afectan las demás
-- ✅ **Testabilidad**: Lógica matemática aislada y fácil de probar
-- ✅ **Escalabilidad**: Base sólida para futuras expansiones
-- ✅ **Legibilidad**: Código organizado y fácil de entender
+
+**Justificación y Beneficios:**
+
+La **Arquitectura en Capas** fue fundamental para este proyecto, ya que fomenta una clara **separación de preocupaciones** dentro del frontend. La **Capa de Presentación** (HTML/CSS) maneja lo visual; la **Capa de Lógica de UI** (JavaScript) gestiona las interacciones y el estado; y la **Capa de Negocio/Cálculo** (JavaScript puro) contiene la lógica matemática central, aislada de la interfaz. Esta división hace el código más **legible, organizado y fácil de mantener**, permitiendo que los cambios en una capa no afecten las demás y facilitando la **testabilidad** de la lógica clave.
 
 ---
 
-## 🤖 Prompt Engineering Utilizado
+## 🤖 Proceso de Prompt Engineering
 
-**¿Cómo logré estos resultados con Prompt Engineering?**
+Para generar este proyecto, empleé un prompt estratégico y detallado, guiando a la IA a través de un proceso de desarrollo estructurado. Mi enfoque fue crear un prompt **multifacético** que asegurara un código que cumpliera tanto con los requisitos funcionales como con la arquitectura deseada.
 
-### 📝 Estructura del Prompt
+### 📝 Estructura del Prompt Utilizado
 
-**1. Rol Definido:**
-```
+PLANTILLA DE PROMPT MAESTRO (Calculadora Web Mejorada)
+1. Rol:
 Actúa como un desarrollador web front-end experimentado.
-```
 
-**2. Tarea Específica:**
-```
-Desarrolla una aplicación de calculadora web capaz de realizar 
-las cuatro operaciones aritméticas fundamentales.
-```
+2. Tarea:
+Desarrolla una aplicación de calculadora web capaz de realizar las cuatro operaciones aritméticas fundamentales (suma, resta, multiplicación y división).
 
-**3. Requisitos Técnicos:**
+3. Contexto Detallado / Requisitos:
 
-**Arquitectura:**
-- **Capa de Presentación (HTML/CSS):** Estructura y apariencia de la interfaz
-- **Capa de Lógica de UI (JavaScript):** Gestión de eventos DOM y coordinación
-- **Capa de Negocio/Cálculo (JavaScript):** Lógica matemática pura, aislada de la UI
+**a. Arquitectura:**
+Implementa una **Arquitectura en Capas a nivel de frontend**, separando claramente las responsabilidades:
+-   **Capa de Presentación (HTML/CSS):** Encargada de la estructura y apariencia de la interfaz de usuario.
+-   **Capa de Lógica de UI (JavaScript):** Gestionará la interacción del usuario con el DOM (eventos de clic) y coordinará las llamadas a la Capa de Negocio.
+-   **Capa de Negocio/Cálculo (JavaScript):** Contendrá la lógica pura de las operaciones matemáticas, completamente aislada de la UI y los eventos del DOM.
 
-**Tecnologías:**
-- HTML5, CSS3, JavaScript puro
-- ❌ Sin frameworks externos (React, Vue, jQuery, etc.)
+**b. Tecnologías:**
+-   HTML5, CSS3, JavaScript puro.
+-   **No se permite el uso de frameworks o librerías externas** (ej., React, Vue, jQuery, etc.).
 
-**Archivos Requeridos:**
-- `index.html`: Estructura HTML con display y botones
-- `style.css`: Estilos modernos y responsive
-- `script.js`: Lógica de UI + Cálculos matemáticos
+**c. Archivos y Estructura:**
+El proyecto debe organizarse en los siguientes archivos dentro de la carpeta raíz del proyecto:
+-   `index.html`: Estructura HTML de la calculadora (Capa de Presentación). Debe incluir un display y un grid de botones (0-9, +, -, *, /, C, =, .). Cada botón debe tener identificadores claros o atributos `data-` para la lógica JS.
+-   `style.css`: Estilos CSS para la calculadora (Capa de Presentación). Debe tener un aspecto moderno y amigable, con énfasis en la claridad visual y un diseño de grid para los botones.
+-   `script.js`: Lógica JavaScript (implementando Capa de Lógica de UI y Capa de Negocio/Cálculo). Debe aplicar buenas prácticas y un manejo robusto de errores y excepciones.
 
-**Funcionalidades Implementadas:**
-- 🔢 Display interactivo para entrada y resultados
-- 🔴 Botones numéricos (0-9, .)
-- ➕➖✖️➗ Operaciones básicas (+, -, *, /)
-- 🟰 Cálculo de resultados (=)
-- 🔄 Función de limpieza (C)
-- ⚠️ Manejo de errores (división por cero)
+**d. Funcionalidades Específicas:**
+-   **Display:** Debe mostrar la entrada actual y los resultados.
+-   **Botones Numéricos (0-9, .):** Al ser presionados, añaden el número o punto al display.
+-   **Botones de Operación (+, -, *, /):** Al ser presionados, guardan la operación y el primer número.
+-   **Botón Igual (=):** Realiza el cálculo final.
+-   **Botón Limpiar (C):** Resetea el display y el estado de la calculadora.
+-   **Manejo de División por Cero:** Si se intenta dividir por cero, el display debe mostrar "Error" y resetear el estado.
+4. Restricciones / Consideraciones Adicionales:
 
-**Restricciones:**
-- 📖 Código legible, modular y bien comentado
-- 🌐 Completamente frontend (sin backend)
-- 📱 Diseño responsive básico
-- ⚡ Sin complejidad innecesaria
+El código debe ser legible, modular y estar bien comentado.
 
----
+La aplicación debe ser completamente front-end; no se requiere backend.
 
-## 💡 Justificación del Diseño del Prompt
+Evitar cualquier exceso de complejidad o patrones de diseño que no sean estrictamente necesarios para una calculadora básica.
 
-**¿Por qué estructuré el prompt de esta manera?**
+El diseño debe ser responsive básico para adaptarse a diferentes tamaños de pantalla.
 
-Mi enfoque fue crear un prompt **estratégico y multifacético** que guiara a la IA hacia un desarrollo estructurado y deliberado.
+5. Formato de Salida / Instrucciones Finales:
+Genera el código completo para todos los archivos especificados (index.html, style.css, script.js), asegurando que la aplicación sea funcional y directamente ejecutable en un navegador. Incluye comentarios explicativos donde sea necesario.
 
-**Elementos Clave del Prompt:**
 
-**🎭 Rol Específico:** Enfocar conocimiento en tecnologías web frontend
-- **Resultado:** Soluciones adecuadas para UI
+### 🎯 Técnicas de Prompt Engineering Aplicadas
 
-**🎯 Tarea Clara:** Objetivo inequívoco y bien definido
-- **Resultado:** Dirección precisa del desarrollo
+Este prompt demuestra el uso efectivo de varias técnicas clave de Prompt Engineering:
 
-**🏗️ Arquitectura Detallada:** Separación de responsabilidades en JavaScript
-- **Resultado:** Código mantenible y testeable
+1.  **Role-Based Prompting:** `Actúa como un desarrollador web front-end experimentado.` Esto activó el conocimiento específico del dominio y estableció expectativas de calidad profesional.
+2.  **Task Decomposition:** La tarea compleja se dividió en subtareas claras (UI, lógica, estilos, funciones específicas) con responsabilidades bien definidas para cada capa de la arquitectura.
+3.  **Constraint Setting:** Restricciones explícitas como "JavaScript puro, sin frameworks" y "manejo robusto de errores" guiaron a la IA para evitar soluciones innecesariamente complejas y mantener el foco en los objetivos principales del proyecto didáctico.
+4.  **Especificidad sin Rigidez:** Se detalló QUÉ se quería (comportamientos exactos de botones, manejo de división por cero), sin dictar CÓMO implementarlo, dando a la IA libertad creativa dentro de los parámetros.
 
-**🛠️ Tecnologías Explícitas:** JavaScript puro, sin frameworks
-- **Resultado:** Solución simple y didáctica
+### ✅ Lecciones Aprendidas
 
-**📁 Estructura de Archivos:** Nombres y contenidos específicos
-- **Resultado:** Proyecto organizado y realista
+El éxito en la generación de este proyecto valida que un **diseño de prompt metódico y detallado** es crucial para obtener resultados precisos y alineados con objetivos arquitectónicos y funcionales específicos. Demuestra mi capacidad para:
 
-**⚡ Funcionalidades Específicas:** Comportamiento detallado + casos borde
-- **Resultado:** Aplicación robusta y funcional
-
-**🚫 Restricciones Claras:** Límites y expectativas de calidad
-- **Resultado:** Código limpio y eficiente
-
-**Resultado Exitoso:**
-
-El éxito de este proyecto demuestra mi capacidad para:
-- ✅ Diseñar prompts complejos con múltiples facetas
-- ✅ Aplicar Prompt Engineering metódico y detallado
-- ✅ Obtener resultados precisos alineados con objetivos arquitectónicos específicos
-- ✅ Balancear especificidad sin limitar la creatividad de la IA
+* Diseñar prompts complejos y multifacéticos.
+* Aplicar Prompt Engineering de manera efectiva.
+* Obtener código estructurado, organizado y funcional.
 
 ---
 
@@ -141,19 +121,19 @@ El éxito de este proyecto demuestra mi capacidad para:
 
 **Pasos de Instalación:**
 
-1. **📂 Ubicar el proyecto**
-   ```
-   📁 01-Calculadora/
-   ├── 📄 index.html
-   ├── 🎨 style.css  
-   └── ⚙️ script.js
-   ```
+1.  **📂 Ubicar el proyecto**
+    ```
+    📁 01-Calculadora/
+    ├── 📄 index.html
+    ├── 🎨 style.css  
+    └── ⚙️ script.js
+    ```
 
-2. **▶️ Ejecutar la aplicación**
-   - **Opción 1:** Doble clic en `index.html`
-   - **Opción 2:** Arrastrar `index.html` al navegador
-   - **Opción 3:** Abrir con "Abrir con..." → Navegador
+2.  **▶️ Ejecutar la aplicación**
+    * **Opción 1:** Doble clic en `index.html`
+    * **Opción 2:** Arrastrar `index.html` al navegador
+    * **Opción 3:** Abrir con "Abrir con..." → Navegador
 
-3. **🎉 ¡Listo para usar!**
-   - La calculadora se abrirá en tu navegador
-   - Todas las funcionalidades están disponibles inmediatamente
+3.  **🎉 ¡Listo para usar!**
+    * La calculadora se abrirá en tu navegador
+    * Todas las funcionalidades están disponibles inmediatamente
