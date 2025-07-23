@@ -5,13 +5,6 @@
 **Tecnologías:** HTML5 | CSS3 | JavaScript Puro
 
 ---
-
-## 🚀 Demo en Vivo
-
-**[Ver Calculadora Funcionando](https://francorossids.github.io/Prompt-Practica/proyectos/01-Calculadora/)**
-
----
-
 ## 🏗️ Arquitectura Implementada
 
 Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend, demostrando una clara separación de responsabilidades:
@@ -164,10 +157,3 @@ El éxito de este proyecto demuestra mi capacidad para:
 3. **🎉 ¡Listo para usar!**
    - La calculadora se abrirá en tu navegador
    - Todas las funcionalidades están disponibles inmediatamente
-
----
-
-## 🔗 Enlaces
-
-- **🌐 [Demo en Vivo](https://francorossids.github.io/Prompt-Practica/proyectos/01-Calculadora/)**
-- **📂 [Código Fuente](.)**
