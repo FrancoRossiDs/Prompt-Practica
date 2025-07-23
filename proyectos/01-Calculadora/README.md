@@ -1,95 +1,185 @@
-# 📦 Nombre del Proyecto
+# 🧮 Calculadora Web Básica
 
-Calculadora Web Básica con Arquitectura en Capas
+> Una calculadora moderna desarrollada con **Arquitectura en Capas** utilizando tecnologías web nativas
 
-## 🧱 Arquitectura aplicada
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
 
-Este proyecto implementa una Arquitectura en Capas a nivel de frontend. Se eligió este patrón para demostrar una clara separación de responsabilidades entre los distintos componentes de la aplicación cliente.
-La Capa de Presentación (HTML/CSS) se encarga de lo visual; la Capa de Lógica de UI (JavaScript) gestiona las interacciones y el estado del display; y la Capa de Negocio/Cálculo (también en JavaScript) contiene la lógica matemática pura, aislada de la interfaz. Esta división no solo hace el código más legible y organizado, sino que también mejora la mantenibilidad al permitir cambios en una capa sin afectar las demás, facilita la testabilidad al aislar la lógica clave, y proporciona una base sólida para una futura escalabilidad.
+---
 
-## 🤖 Prompt usado
+## 🏗️ Arquitectura Implementada
 
-    **1. Rol:**
-    Actúa como un **desarrollador web front-end experimentado**.
+Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend, demostrando una clara separación de responsabilidades:
 
-    **2. Tarea:**
-    Desarrolla una **aplicación de calculadora web** capaz de realizar las cuatro operaciones aritméticas fundamentales (suma, resta, multiplicación y división).
+```
+┌─────────────────────────────────────┐
+│     🎨 Capa de Presentación        │
+│        (HTML/CSS)                   │
+└─────────────────────────────────────┘
+            ⬇️
+┌─────────────────────────────────────┐
+│     ⚙️ Capa de Lógica de UI        │
+│       (JavaScript DOM)             │
+└─────────────────────────────────────┘
+            ⬇️
+┌─────────────────────────────────────┐
+│     🧠 Capa de Negocio/Cálculo     │
+│    (JavaScript Puro)               │
+└─────────────────────────────────────┘
+```
 
-    **3. Contexto Detallado / Requisitos:**
+### 🔍 Beneficios de esta Arquitectura:
 
-    **a. Arquitectura:**
-    Implementa una **Arquitectura en Capas a nivel de frontend**, separando claramente las responsabilidades:
-    -   **Capa de Presentación (HTML/CSS):** Encargada de la estructura y apariencia de la interfaz de usuario.
-    -   **Capa de Lógica de UI (JavaScript):** Gestionará la interacción del usuario con el DOM (eventos de clic) y coordinará las llamadas a la Capa de Negocio.
-    -   **Capa de Negocio/Cálculo (JavaScript):** Contendrá la lógica pura de las operaciones matemáticas, completamente aislada de la UI y los eventos del DOM.
+- ✅ **Mantenibilidad**: Cambios en una capa no afectan las demás
+- ✅ **Testabilidad**: Lógica matemática aislada y fácil de probar
+- ✅ **Escalabilidad**: Base sólida para futuras expansiones
+- ✅ **Legibilidad**: Código organizado y fácil de entender
 
-    **b. Tecnologías:**
-    -   HTML5, CSS3, JavaScript puro.
-    -   **No se permite el uso de frameworks o librerías externas** (ej., React, Vue, jQuery, etc.).
+---
 
-    **c. Archivos y Estructura:**
-    El proyecto debe organizarse en los siguientes archivos dentro de la carpeta raíz del proyecto:
-    -   `index.html`: Estructura HTML de la calculadora (Capa de Presentación). Debe incluir un display y un grid de botones (0-9, +, -, *, /, C, =, .). Cada botón debe tener identificadores claros o atributos `data-` para la lógica JS.
-    -   `style.css`: Estilos CSS para la calculadora (Capa de Presentación). Debe tener un aspecto moderno y amigable, con énfasis en la claridad visual y un diseño de grid para los botones.
-    -   `script.js`: Lógica JavaScript (implementando Capa de Lógica de UI y Capa de Negocio/Cálculo). Debe aplicar buenas prácticas y un manejo robusto de errores y excepciones.
+## 🤖 Prompt Engineering Utilizado
 
-    **d. Funcionalidades Específicas:**
-    -   **Display:** Debe mostrar la entrada actual y los resultados.
-    -   **Botones Numéricos (0-9, .):** Al ser presionados, añaden el número o punto al display.
-    -   **Botones de Operación (+, -, *, /):** Al ser presionados, guardan la operación y el primer número.
-    -   **Botón Igual (=):** Realiza el cálculo final.
-    -   **Botón Limpiar (C):** Resetea el display y el estado de la calculadora.
-    -   **Manejo de División por Cero:** Si se intenta dividir por cero, el display debe mostrar "Error" y resetear el estado.
+## 🤖 Prompt Engineering Utilizado
 
-    **4. Restricciones / Consideraciones Adicionales:**
-    -   El código debe ser **legible, modular y estar bien comentado**.
-    -   La aplicación debe ser **completamente front-end; no se requiere backend**.
-    -   Evitar cualquier **exceso de complejidad** o patrones de diseño que no sean estrictamente necesarios para una calculadora básica.
-    -   El diseño debe ser **responsive básico** para adaptarse a diferentes tamaños de pantalla.
-    - Tener en cuenta adaptabilidad para distintas resoluciones
+<details>
+<summary>📝 <strong>Ver Prompt Completo</strong> (Click para expandir)</summary>
 
-    **5. Formato de Salida / Instrucciones Finales:**
-    Genera el **código completo para todos los archivos especificados** (`index.html`, `style.css`, `script.js`), asegurando que la aplicación sea **funcional y directamente ejecutable** en un navegador. Incluye comentarios explicativos donde sea necesario.
+### 1️⃣ **Rol Definido:**
+```
+Actúa como un desarrollador web front-end experimentado.
+```
 
-## 💭 Justificación
-Elegí diseñar el prompt de esta manera porque buscaba guiar a la IA a través de un proceso de desarrollo estructurado y deliberado. La inclusión de secciones claramente definidas y el detalle específico en cada una fueron cruciales para asegurar que el resultado se alineara con mis objetivos de diseño y arquitectura.
+### 2️⃣ **Tarea Específica:**
+```
+Desarrolla una aplicación de calculadora web capaz de realizar 
+las cuatro operaciones aritméticas fundamentales 
+(suma, resta, multiplicación y división).
+```
 
-Cada parte del prompt tuvo un propósito estratégico:
+### 3️⃣ **Requisitos Técnicos:**
 
-Rol Específico (desarrollador web front-end experimentado): Esto fue clave para que la IA enfocara su conocimiento en las tecnologías y patrones relevantes para el desarrollo web del lado del cliente, garantizando soluciones adecuadas para una interfaz de usuario.
+#### 🏗️ **Arquitectura:**
+- **Capa de Presentación (HTML/CSS):** Estructura y apariencia de la interfaz
+- **Capa de Lógica de UI (JavaScript):** Gestión de eventos DOM y coordinación
+- **Capa de Negocio/Cálculo (JavaScript):** Lógica matemática pura, aislada de la UI
 
-Tarea Clara: Establecí el objetivo principal de la aplicación de manera concisa para darle a la IA una dirección inequívoca.
+#### 🛠️ **Tecnologías:**
+- HTML5, CSS3, JavaScript puro
+- ❌ **Sin frameworks externos** (React, Vue, jQuery, etc.)
 
-Arquitectura en Capas Detallada: Instruí a la IA sobre cómo organizar la lógica interna del código JavaScript. Esto era fundamental para mí, ya que buscaba una separación de responsabilidades que mejorara la mantenibilidad y testabilidad, evitando un código desorganizado.
+#### 📁 **Estructura de Archivos:**
+| Archivo | Propósito |
+|---------|-----------|
+| `index.html` | Estructura HTML con display y botones |
+| `style.css` | Estilos modernos y responsive |
+| `script.js` | Lógica de UI + Cálculos matemáticos |
 
-Tecnologías Explícitas: Al especificar "JavaScript puro" y "sin frameworks", me aseguré de que la solución fuera simple y didáctica, sin introducir complejidades o dependencias innecesarias que no quería explorar en este proyecto.
+#### ⚡ **Funcionalidades Implementadas:**
+- 🔢 **Display interactivo** para entrada y resultados
+- 🔴 **Botones numéricos** (0-9, .)
+- ➕➖✖️➗ **Operaciones básicas** (+, -, *, /)
+- 🟰 **Cálculo de resultados** (=)
+- 🔄 **Función de limpieza** (C)
+- ⚠️ **Manejo de errores** (división por cero)
 
-Archivos y Estructura: Esta parte fue vital para que la IA generara múltiples archivos (index.html, style.css, script.js) con su contenido y nombres correctos, reflejando una estructura de proyecto realista.
+#### 🎯 **Restricciones y Consideraciones:**
+- 📖 Código legible, modular y bien comentado
+- 🌐 Completamente frontend (sin backend)
+- 📱 Diseño responsive básico
+- ⚡ Sin complejidad innecesaria
 
-Funcionalidades Específicas: Detallé el comportamiento esperado para cada interacción de la calculadora, incluyendo el manejo de casos borde como la división por cero. Esto garantizó una aplicación funcional y robusta.
+</details>
 
-Restricciones Claras: Definieron los límites y las expectativas de calidad (legibilidad, modularidad, no complejidad excesiva), lo que me ayudó a obtener un código limpio y eficiente para el alcance del proyecto.
+---
 
-Formato de Salida: Solicitó directamente el código completo y ejecutable, optimizando la interacción y reduciendo el trabajo manual posterior.
+## � Justificación del Diseño del Prompt
 
-El éxito en la generación de este proyecto demuestra mi capacidad para diseñar prompts complejos y multifacéticos, y resalta la importancia de un enfoque metódico y detallado en el Prompt Engineering para obtener resultados precisos y alineados con objetivos arquitectónicos y funcionales específicos.
+> **¿Por qué estructuré el prompt de esta manera?**
 
-## 🖼️ Capturas
+Mi enfoque fue crear un prompt **estratégico y multifacético** que guiara a la IA hacia un desarrollo estructurado y deliberado:
 
-![Captura 1 - Interfaz Principal](../01-Calculadora/screenshot/Captura%20de%20pantalla%202025-07-22%20221153.png)
-*Vista principal de la calculadora*
+### 🎯 **Elementos Clave del Prompt:**
 
-![Captura 2 - Ejemplo de Operación](../01-Calculadora/screenshot/Captura%20de%20pantalla%202025-07-22%20221212.png)
-*Ejemplo de operación matemática en proceso*
+| Componente | Propósito | Resultado |
+|------------|-----------|-----------|
+| 🎭 **Rol Específico** | Enfocar conocimiento en tecnologías web frontend | Soluciones adecuadas para UI |
+| 🎯 **Tarea Clara** | Objetivo inequívoco y bien definido | Dirección precisa del desarrollo |
+| 🏗️ **Arquitectura Detallada** | Separación de responsabilidades en JavaScript | Código mantenible y testeable |
+| 🛠️ **Tecnologías Explícitas** | JavaScript puro, sin frameworks | Solución simple y didáctica |
+| 📁 **Estructura de Archivos** | Nombres y contenidos específicos | Proyecto organizado y realista |
+| ⚡ **Funcionalidades Específicas** | Comportamiento detallado + casos borde | Aplicación robusta y funcional |
+| 🚫 **Restricciones Claras** | Límites y expectativas de calidad | Código limpio y eficiente |
 
-![Captura 3 - Error division entre 0](../01-Calculadora/screenshot/Captura%20de%20pantalla%202025-07-22%20221221.png)
-*Demostración de las funcionalidades implementadas*
+### 🏆 **Resultado Exitoso:**
 
+El éxito de este proyecto demuestra mi capacidad para:
 
-## ▶️ Cómo ejecutarlo
+- ✅ **Diseñar prompts complejos** con múltiples facetas
+- ✅ **Aplicar Prompt Engineering metódico** y detallado
+- ✅ **Obtener resultados precisos** alineados con objetivos arquitectónicos específicos
+- ✅ **Balancear especificidad** sin limitar la creatividad de la IA
 
-1. Asegúrate de tener la carpeta del proyecto 01-calculadora en tu sistema.
+---
 
-2. Navega a la subcarpeta codebase/ (o la carpeta donde hayas colocado index.html, style.css, script.js).
+## � Capturas de Pantalla
 
-3. Abre el archivo index.html directamente en tu navegador web preferido. Puedes hacerlo arrastrando el archivo a la ventana del navegador o haciendo doble clic sobre él.
+<div align="center">
+
+### 🖥️ **Interfaz Principal**
+![Interfaz Principal](screenshot/Captura%20de%20pantalla%202025-07-22%20221153.png)
+*Vista principal de la calculadora con diseño moderno*
+
+### ⚡ **Operación en Proceso**  
+![Ejemplo de Operación](screenshot/Captura%20de%20pantalla%202025-07-22%20221212.png)
+*Ejemplo de operación matemática siendo procesada*
+
+### ⚠️ **Manejo de Errores**
+![Error división por cero](screenshot/Captura%20de%20pantalla%202025-07-22%20221221.png)
+*Demostración del manejo robusto de errores (división por cero)*
+
+</div>
+
+---
+
+## 🚀 Cómo Ejecutar el Proyecto
+
+### 📋 **Prerrequisitos:**
+- 🌐 Navegador web moderno (Chrome, Firefox, Safari, Edge)
+- 📁 Archivos del proyecto descargados
+
+### 🔧 **Pasos de Instalación:**
+
+1. **📂 Ubicar el proyecto**
+   ```
+   📁 01-Calculadora/
+   ├── 📄 index.html
+   ├── 🎨 style.css  
+   └── ⚙️ script.js
+   ```
+
+2. **▶️ Ejecutar la aplicación**
+   - **Opción 1:** Doble clic en `index.html`
+   - **Opción 2:** Arrastrar `index.html` al navegador
+   - **Opción 3:** Abrir con "Abrir con..." → Navegador
+
+3. **🎉 ¡Listo para usar!**
+   - La calculadora se abrirá en tu navegador
+   - Todas las funcionalidades están disponibles inmediatamente
+
+---
+
+### 🔗 **Enlaces Rápidos**
+
+[![🌐 Ver Demo en Vivo](https://img.shields.io/badge/🌐_Ver_Demo-37a779?style=for-the-badge)](https://francorossids.github.io/Prompt-Practica/proyectos/01-Calculadora/)
+[![📂 Ver Código Fuente](https://img.shields.io/badge/📂_Código_Fuente-2ea043?style=for-the-badge)](.)
+
+---
+
+<div align="center">
+
+**⭐ Si te gustó este proyecto, ¡dale una estrella al repositorio!**
+
+*Desarrollado con ❤️ usando Prompt Engineering y Arquitectura en Capas*
+
+</div>
