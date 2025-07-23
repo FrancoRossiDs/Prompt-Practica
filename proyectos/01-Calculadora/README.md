@@ -52,27 +52,27 @@ La Capa de Presentación (HTML/CSS) se encarga de lo visual; la Capa de Lógica 
     Genera el **código completo para todos los archivos especificados** (`index.html`, `style.css`, `script.js`), asegurando que la aplicación sea **funcional y directamente ejecutable** en un navegador. Incluye comentarios explicativos donde sea necesario.
 
 ## 💭 Justificación
-    Elegí diseñar el prompt de esta manera porque buscaba guiar a la IA a través de un proceso de desarrollo estructurado y deliberado. La inclusión de secciones claramente definidas y el detalle específico en cada una fueron cruciales para asegurar que el resultado se alineara con mis objetivos de diseño y arquitectura.
+Elegí diseñar el prompt de esta manera porque buscaba guiar a la IA a través de un proceso de desarrollo estructurado y deliberado. La inclusión de secciones claramente definidas y el detalle específico en cada una fueron cruciales para asegurar que el resultado se alineara con mis objetivos de diseño y arquitectura.
 
-    Cada parte del prompt tuvo un propósito estratégico:
+Cada parte del prompt tuvo un propósito estratégico:
 
-    Rol Específico (desarrollador web front-end experimentado): Esto fue clave para que la IA enfocara su conocimiento en las tecnologías y patrones relevantes para el desarrollo web del lado del cliente, garantizando soluciones adecuadas para una interfaz de usuario.
+Rol Específico (desarrollador web front-end experimentado): Esto fue clave para que la IA enfocara su conocimiento en las tecnologías y patrones relevantes para el desarrollo web del lado del cliente, garantizando soluciones adecuadas para una interfaz de usuario.
 
-    Tarea Clara: Establecí el objetivo principal de la aplicación de manera concisa para darle a la IA una dirección inequívoca.
+Tarea Clara: Establecí el objetivo principal de la aplicación de manera concisa para darle a la IA una dirección inequívoca.
 
-    Arquitectura en Capas Detallada: Instruí a la IA sobre cómo organizar la lógica interna del código JavaScript. Esto era fundamental para mí, ya que buscaba una separación de responsabilidades que mejorara la mantenibilidad y testabilidad, evitando un código desorganizado.
+Arquitectura en Capas Detallada: Instruí a la IA sobre cómo organizar la lógica interna del código JavaScript. Esto era fundamental para mí, ya que buscaba una separación de responsabilidades que mejorara la mantenibilidad y testabilidad, evitando un código desorganizado.
 
-    Tecnologías Explícitas: Al especificar "JavaScript puro" y "sin frameworks", me aseguré de que la solución fuera simple y didáctica, sin introducir complejidades o dependencias innecesarias que no quería explorar en este proyecto.
+Tecnologías Explícitas: Al especificar "JavaScript puro" y "sin frameworks", me aseguré de que la solución fuera simple y didáctica, sin introducir complejidades o dependencias innecesarias que no quería explorar en este proyecto.
 
-    Archivos y Estructura: Esta parte fue vital para que la IA generara múltiples archivos (index.html, style.css, script.js) con su contenido y nombres correctos, reflejando una estructura de proyecto realista.
+Archivos y Estructura: Esta parte fue vital para que la IA generara múltiples archivos (index.html, style.css, script.js) con su contenido y nombres correctos, reflejando una estructura de proyecto realista.
 
-    Funcionalidades Específicas: Detallé el comportamiento esperado para cada interacción de la calculadora, incluyendo el manejo de casos borde como la división por cero. Esto garantizó una aplicación funcional y robusta.
+Funcionalidades Específicas: Detallé el comportamiento esperado para cada interacción de la calculadora, incluyendo el manejo de casos borde como la división por cero. Esto garantizó una aplicación funcional y robusta.
 
-    Restricciones Claras: Definieron los límites y las expectativas de calidad (legibilidad, modularidad, no complejidad excesiva), lo que me ayudó a obtener un código limpio y eficiente para el alcance del proyecto.
+Restricciones Claras: Definieron los límites y las expectativas de calidad (legibilidad, modularidad, no complejidad excesiva), lo que me ayudó a obtener un código limpio y eficiente para el alcance del proyecto.
 
-    Formato de Salida: Solicitó directamente el código completo y ejecutable, optimizando la interacción y reduciendo el trabajo manual posterior.
+Formato de Salida: Solicitó directamente el código completo y ejecutable, optimizando la interacción y reduciendo el trabajo manual posterior.
 
-    El éxito en la generación de este proyecto demuestra mi capacidad para diseñar prompts complejos y multifacéticos, y resalta la importancia de un enfoque metódico y detallado en el Prompt Engineering para obtener resultados precisos y alineados con objetivos arquitectónicos y funcionales específicos.
+El éxito en la generación de este proyecto demuestra mi capacidad para diseñar prompts complejos y multifacéticos, y resalta la importancia de un enfoque metódico y detallado en el Prompt Engineering para obtener resultados precisos y alineados con objetivos arquitectónicos y funcionales específicos.
 
 ## 🖼️ Capturas
 
