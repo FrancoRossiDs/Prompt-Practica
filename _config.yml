@@ -1,13 +1,31 @@
 # Configuración de Jekyll para GitHub Pages
 exclude:
   - node_modules/
+  - "*/node_modules/"
+  - "**/node_modules/"
   - coverage/
-  - "*.json"
-  - "*.js"
+  - "*/coverage/"
+  - "**/coverage/"
   - tests/
+  - "*/tests/"
+  - "**/tests/"
   - src/
-  - package-lock.json
+  - "*/src/"
+  - "**/src/"
+  - "*.json"
+  - "*/package.json"
+  - "*/package-lock.json"
+  - "**/package.json"
+  - "**/package-lock.json"
+  - "*.js"
+  - "*/calculator-browser.js"
+  - "*/script.js"
+  - "**/calculator.js"
   - .gitignore
+  - "*/.gitignore"
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
 
 # Plugins requeridos por GitHub Pages
 plugins:
@@ -23,3 +41,9 @@ url: "https://francorossids.github.io"
 # Configuración de Markdown
 markdown: kramdown
 highlighter: rouge
+
+# Configuración adicional para evitar errores
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
