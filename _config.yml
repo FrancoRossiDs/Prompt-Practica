@@ -1,0 +1,25 @@
+# Configuración de Jekyll para GitHub Pages
+exclude:
+  - node_modules/
+  - coverage/
+  - "*.json"
+  - "*.js"
+  - tests/
+  - src/
+  - package-lock.json
+  - .gitignore
+
+# Plugins requeridos por GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Configuración básica
+title: "Prompt Practice"
+description: "Repositorio de práctica de arquitecturas de software y prompt engineering"
+baseurl: "/Prompt-Practica"
+url: "https://francorossids.github.io"
+
+# Configuración de Markdown
+markdown: kramdown
+highlighter: rouge
