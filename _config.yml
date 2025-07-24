@@ -3,6 +3,8 @@ exclude:
   - node_modules/
   - "*/node_modules/"
   - "**/node_modules/"
+  - "*/node_modules/**"
+  - "**/node_modules/**"
   - coverage/
   - "*/coverage/"
   - "**/coverage/"
@@ -26,6 +28,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
+  - "*/node_modules/*.md"
+  - "**/node_modules/*.md"
+  - "*/node_modules/**/*.md"
+  - "**/node_modules/**/*.md"
 
 # Plugins requeridos por GitHub Pages
 plugins:
