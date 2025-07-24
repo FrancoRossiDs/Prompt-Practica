@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1753327847359" clover="3.2.0">
+  <project timestamp="1753327847359" name="All files">
+    <metrics statements="27" coveredstatements="26" conditionals="15" coveredconditionals="14" methods="7" coveredmethods="7" elements="49" coveredelements="47" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
+    <file name="calculator.js" path="C:\Users\Franc\Desktop\Prompt-Practica\proyectos\01-Calculadora\src\calculator.js">
+      <metrics statements="27" coveredstatements="26" conditionals="15" coveredconditionals="14" methods="7" coveredmethods="7"/>
+      <line num="15" count="7" type="stmt"/>
+      <line num="25" count="6" type="stmt"/>
+      <line num="35" count="7" type="stmt"/>
+      <line num="46" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="47" count="3" type="stmt"/>
+      <line num="49" count="6" type="stmt"/>
+      <line num="60" count="7" type="stmt"/>
+      <line num="63" count="7" type="cond" truecount="5" falsecount="0"/>
+      <line num="65" count="1" type="stmt"/>
+      <line num="66" count="1" type="stmt"/>
+      <line num="68" count="1" type="stmt"/>
+      <line num="69" count="1" type="stmt"/>
+      <line num="71" count="1" type="stmt"/>
+      <line num="72" count="1" type="stmt"/>
+      <line num="74" count="3" type="stmt"/>
+      <line num="75" count="2" type="stmt"/>
+      <line num="77" count="1" type="stmt"/>
+      <line num="81" count="5" type="cond" truecount="3" falsecount="1"/>
+      <line num="82" count="0" type="stmt"/>
+      <line num="86" count="5" type="stmt"/>
+      <line num="88" count="5" type="stmt"/>
+      <line num="94" count="2" type="stmt"/>
+      <line num="108" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="117" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="118" count="1" type="stmt"/>
+      <line num="120" count="4" type="stmt"/>
+      <line num="124" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Tests Calculadora",
+			"type": "shell",
+			"command": "npm test",
+			"group": "test",
+			"problemMatcher": [],
+			"isBackground": false
+		}
+	]
+}

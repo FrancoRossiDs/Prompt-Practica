@@ -1,96 +1,212 @@
-# 🧮 Calculadora Web Básica
+# 🧮 Calculadora Web con Tests Unitarios
 
-**Una calculadora moderna desarrollada con Arquitectura en Capas utilizando tecnologías web nativas**
+**Una calculadora moderna desarrollada con Arquitectura en## 📁 Estructura del Proyecto
 
-**Tecnologías:** HTML5 | CSS3 | JavaScript Puro
+```
+01-Calculadora/
+├── 📄 index.html                      # Capa de Presentación
+├── 🎨 style.css                       # Estilos y diseño
+├── ⚙️ script.js                       # Lógica de UI y DOM
+├── 🌐 calculator-browser.js           # Módulo para navegador
+├── 📦 package.json                    # Configuración de proyecto
+├── 📖 README.md                       # Documentación principal
+├── 📚 GUIA-TESTING-UNITARIO.md        # Guía completa de testing
+├── src/
+│   └── 🧠 calculator.js               # Módulo de lógica pura (Node.js)
+├── tests/
+│   └── 🧪 calculator.test.js          # Suite de tests unitarios
+├── node_modules/                      # Dependencias
+├── coverage/                          # Reportes de cobertura
+└── screenshot/                        # Capturas de pantalla
+    ├── Captura [...] 221153.png
+    ├── Captura [...] 221212.png
+    └── Captura [...] 221221.png
+```omatizado utilizando tecnologías web nativas**
+
+**Tecnologías:** HTML5 | CSS3 | JavaScript Puro | Jest
 
 ---
 ## 🏗️ Arquitectura Implementada
 
-Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend, demostrando una clara **separación de responsabilidades**:
+Este proyecto utiliza una **Arquitectura en Capas** a nivel frontend con **separación completa de responsabilidades**:
 
 **Flujo de la Arquitectura:**
-🎨 Capa de Presentación (HTML/CSS)
-    ↓
-⚙️ Capa de Lógica de UI (JavaScript DOM)
-    ↓
-🧠 Capa de Negocio/Cálculo (JavaScript Puro)
-
+🎨 Capa de Presentación (HTML/CSS) → **Interfaz de Usuario**
+    ↓
+⚙️ Capa de Lógica de UI (script.js) → **Gestión del DOM y Estado**
+    ↓
+🧠 Capa de Negocio (src/calculator.js) → **Lógica Matemática Pura**
+    ↓
+🧪 Capa de Testing (tests/) → **Validación Automatizada**
 
 **Justificación y Beneficios:**
 
-La **Arquitectura en Capas** fue fundamental para este proyecto, ya que fomenta una clara **separación de preocupaciones** dentro del frontend. La **Capa de Presentación** (HTML/CSS) maneja lo visual; la **Capa de Lógica de UI** (JavaScript) gestiona las interacciones y el estado; y la **Capa de Negocio/Cálculo** (JavaScript puro) contiene la lógica matemática central, aislada de la interfaz. Esta división hace el código más **legible, organizado y fácil de mantener**, permitiendo que los cambios en una capa no afecten las demás y facilitando la **testabilidad** de la lógica clave.
+La **Arquitectura en Capas** con **separación de módulos** permite:
+- **Testabilidad:** La lógica matemática está completamente separada del DOM, facilitando las pruebas unitarias
+- **Mantenibilidad:** Cada capa tiene responsabilidades claras y bien definidas
+- **Reutilización:** Los módulos pueden reutilizarse en diferentes contextos (browser/Node.js)
+- **Escalabilidad:** Fácil agregar nuevas funcionalidades sin afectar el código existente
+
+---
+
+## 🧪 Testing y Calidad de Código
+
+El proyecto incluye un **suite completo de tests unitarios** con **96.29% de cobertura**:
+
+- **33 Tests Unitarios** que validan todas las operaciones matemáticas
+- **Cobertura del 96.29%** de líneas de código  
+- **Framework Jest** para testing profesional
+- **Separación de entornos:** Módulos compatibles con browser y Node.js
+
+### 📊 Ejecutar Tests
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar tests
+npm test
+
+# Tests en modo watch (desarrollo)
+npm run test:watch
+
+# Generar reporte de cobertura
+npm run test:coverage
+```
+
+> 📖 **¿Nuevo en Testing?** Lee nuestra [**Guía Completa de Testing Unitario**](GUIA-TESTING-UNITARIO.md) - Explicación desde cero de todo lo implementado en este proyecto.
 
 ---
 
 ## 🤖 Proceso de Prompt Engineering
 
-Para generar este proyecto, empleé un prompt estratégico y detallado, guiando a la IA a través de un proceso de desarrollo estructurado. Mi enfoque fue crear un prompt **multifacético** que asegurara un código que cumpliera tanto con los requisitos funcionales como con la arquitectura deseada.
+Para generar este proyecto, empleé un **prompt estratégico evolutivo**, guiando a la IA a través de múltiples iteraciones de desarrollo. Mi enfoque fue crear un prompt **multifacético** que asegurara tanto los requisitos funcionales como la **arquitectura testeable**.
 
-### 📝 Estructura del Prompt Utilizado
+### 📝 Evolución del Prompt Utilizado
 
+**FASE 1: Desarrollo Inicial**
+```
 PLANTILLA DE PROMPT MAESTRO (Calculadora Web Mejorada)
+
 1. Rol:
 Actúa como un desarrollador web front-end experimentado.
 
 2. Tarea:
-Desarrolla una aplicación de calculadora web capaz de realizar las cuatro operaciones aritméticas fundamentales (suma, resta, multiplicación y división).
+Desarrolla una aplicación de calculadora web capaz de realizar las cuatro 
+operaciones aritméticas fundamentales (suma, resta, multiplicación y división).
 
 3. Contexto Detallado / Requisitos:
 
-**a. Arquitectura:**
-Implementa una **Arquitectura en Capas a nivel de frontend**, separando claramente las responsabilidades:
--   **Capa de Presentación (HTML/CSS):** Encargada de la estructura y apariencia de la interfaz de usuario.
--   **Capa de Lógica de UI (JavaScript):** Gestionará la interacción del usuario con el DOM (eventos de clic) y coordinará las llamadas a la Capa de Negocio.
--   **Capa de Negocio/Cálculo (JavaScript):** Contendrá la lógica pura de las operaciones matemáticas, completamente aislada de la UI y los eventos del DOM.
+a. Arquitectura:
+Implementa una Arquitectura en Capas a nivel de frontend, separando claramente 
+las responsabilidades:
+- Capa de Presentación (HTML/CSS): Estructura y apariencia de la interfaz
+- Capa de Lógica de UI (JavaScript): Gestión de interacción del usuario con DOM
+- Capa de Negocio/Cálculo (JavaScript): Lógica pura de operaciones matemáticas
 
-**b. Tecnologías:**
--   HTML5, CSS3, JavaScript puro.
--   **No se permite el uso de frameworks o librerías externas** (ej., React, Vue, jQuery, etc.).
+b. Tecnologías:
+- HTML5, CSS3, JavaScript puro
+- No se permite el uso de frameworks o librerías externas
 
-**c. Archivos y Estructura:**
-El proyecto debe organizarse en los siguientes archivos dentro de la carpeta raíz del proyecto:
--   `index.html`: Estructura HTML de la calculadora (Capa de Presentación). Debe incluir un display y un grid de botones (0-9, +, -, *, /, C, =, .). Cada botón debe tener identificadores claros o atributos `data-` para la lógica JS.
--   `style.css`: Estilos CSS para la calculadora (Capa de Presentación). Debe tener un aspecto moderno y amigable, con énfasis en la claridad visual y un diseño de grid para los botones.
--   `script.js`: Lógica JavaScript (implementando Capa de Lógica de UI y Capa de Negocio/Cálculo). Debe aplicar buenas prácticas y un manejo robusto de errores y excepciones.
+c. Funcionalidades Específicas:
+- Display que muestre entrada actual y resultados
+- Botones numéricos (0-9, .) que añadan números al display
+- Botones de operación (+, -, *, /) que guarden operación y primer número
+- Botón igual (=) que realice el cálculo final
+- Botón limpiar (C) que resetee display y estado
+- Manejo robusto de división por cero
 
-**d. Funcionalidades Específicas:**
--   **Display:** Debe mostrar la entrada actual y los resultados.
--   **Botones Numéricos (0-9, .):** Al ser presionados, añaden el número o punto al display.
--   **Botones de Operación (+, -, *, /):** Al ser presionados, guardan la operación y el primer número.
--   **Botón Igual (=):** Realiza el cálculo final.
--   **Botón Limpiar (C):** Resetea el display y el estado de la calculadora.
--   **Manejo de División por Cero:** Si se intenta dividir por cero, el display debe mostrar "Error" y resetear el estado.
-4. Restricciones / Consideraciones Adicionales:
+4. Restricciones:
+- Código legible, modular y bien comentado
+- Aplicación completamente front-end
+- Diseño responsive básico
+- Evitar complejidad innecesaria
+```
 
-El código debe ser legible, modular y estar bien comentado.
+**FASE 2: Refactorización para Testing**
+```
+PROMPT DE REFACTORIZACIÓN:
+"Necesito refactorizar esta calculadora para implementar tests unitarios profesionales.
 
-La aplicación debe ser completamente front-end; no se requiere backend.
+Objetivos:
+1. Separar completamente la lógica matemática del DOM en módulos independientes
+2. Crear compatibilidad tanto para browser como para Node.js  
+3. Mantener toda la funcionalidad existente de la interfaz
+4. Preparar arquitectura para testing automatizado
 
-Evitar cualquier exceso de complejidad o patrones de diseño que no sean estrictamente necesarios para una calculadora básica.
+Requisitos técnicos:
+- Módulo src/calculator.js con funciones puras (CommonJS para Node.js)
+- Módulo calculator-browser.js con las mismas funciones (Window object para browser)
+- Actualizar script.js para usar importación condicional según el entorno
+- Mantener separación clara: UI logic vs Business logic
 
-El diseño debe ser responsive básico para adaptarse a diferentes tamaños de pantalla.
+El resultado debe permitir testing unitario sin dependencias del DOM."
+```
 
-5. Formato de Salida / Instrucciones Finales:
-Genera el código completo para todos los archivos especificados (index.html, style.css, script.js), asegurando que la aplicación sea funcional y directamente ejecutable en un navegador. Incluye comentarios explicativos donde sea necesario.
+**FASE 3: Implementación de Tests**
+```
+PROMPT DE TESTING:
+"Crea un suite completo de tests unitarios usando Jest.
 
+Incluye:
+- Tests para todas las operaciones matemáticas básicas
+- Tests de manejo de errores (división por cero, operadores inválidos)
+- Tests de validación de entrada y formateo de resultados
+- Tests de casos límite (números grandes, decimales, negativos)
+- Configuración completa de Jest con scripts npm
+
+Objetivo: Alcanzar >95% de cobertura de código con tests profesionales 
+que validen tanto casos normales como edge cases."
+```
 
 ### 🎯 Técnicas de Prompt Engineering Aplicadas
 
-Este prompt demuestra el uso efectivo de varias técnicas clave de Prompt Engineering:
+Este proyecto demuestra un **proceso evolutivo de Prompt Engineering** con múltiples técnicas:
 
-1.  **Role-Based Prompting:** `Actúa como un desarrollador web front-end experimentado.` Esto activó el conocimiento específico del dominio y estableció expectativas de calidad profesional.
-2.  **Task Decomposition:** La tarea compleja se dividió en subtareas claras (UI, lógica, estilos, funciones específicas) con responsabilidades bien definidas para cada capa de la arquitectura.
-3.  **Constraint Setting:** Restricciones explícitas como "JavaScript puro, sin frameworks" y "manejo robusto de errores" guiaron a la IA para evitar soluciones innecesariamente complejas y mantener el foco en los objetivos principales del proyecto didáctico.
-4.  **Especificidad sin Rigidez:** Se detalló QUÉ se quería (comportamientos exactos de botones, manejo de división por cero), sin dictar CÓMO implementarlo, dando a la IA libertad creativa dentro de los parámetros.
+1. **Role-Based Prompting:** `Actúa como un desarrollador web full-stack experimentado` - Activó conocimiento específico del dominio
+2. **Task Decomposition:** División de la tarea compleja en fases: desarrollo inicial → refactorización → testing
+3. **Constraint Setting:** Restricciones explícitas como "JavaScript puro, sin frameworks" y "compatibilidad browser/Node.js"
+4. **Quality Gates:** Especificación de métricas concretas como "cobertura >95%" y "arquitectura testeable"
+5. **Iterative Refinement:** Refinamiento iterativo del prompt basado en resultados obtenidos
 
-### ✅ Lecciones Aprendidas
+### ✅ Resultados Obtenidos
 
-El éxito en la generación de este proyecto valida que un **diseño de prompt metódico y detallado** es crucial para obtener resultados precisos y alineados con objetivos arquitectónicos y funcionales específicos. Demuestra mi capacidad para:
+El éxito del proyecto valida la efectividad del **diseño iterativo de prompts**:
 
-* Diseñar prompts complejos y multifacéticos.
-* Aplicar Prompt Engineering de manera efectiva.
-* Obtener código estructurado, organizado y funcional.
+* **33 Tests Unitarios** con **96.29% de cobertura**
+* **Arquitectura modular** completamente separada
+* **Código limpio y documentado** con estándares profesionales
+* **Compatibilidad multi-entorno** (browser/Node.js)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+01-Calculadora/
+├── 📄 index.html              # Capa de Presentación
+├── 🎨 style.css               # Estilos y diseño
+├── ⚙️ script.js               # Lógica de UI y DOM
+├── � calculator-browser.js   # Módulo para navegador
+├── 📦 package.json            # Configuración de proyecto
+├── src/
+│   └── 🧠 calculator.js       # Módulo de lógica pura (Node.js)
+├── tests/
+│   └── 🧪 calculator.test.js  # Suite de tests unitarios
+├── node_modules/              # Dependencias
+├── coverage/                  # Reportes de cobertura
+└── screenshot/                # Capturas de pantalla
+    ├── Captura [...] 221153.png
+    ├── Captura [...] 221212.png
+    └── Captura [...] 221221.png
+```
+
+### 🔧 Tecnologías y Herramientas
+
+- **Frontend:** HTML5, CSS3, JavaScript ES6+
+- **Testing:** Jest Framework
+- **Arquitectura:** Modular con separación de responsabilidades
+- **Compatibilidad:** Cross-environment (Browser/Node.js)
 
 ---
 
@@ -115,17 +231,19 @@ El éxito en la generación de este proyecto valida que un **diseño de prompt m
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
+### 🌐 **Ejecutar la Calculadora**
+
 **Prerrequisitos:**
 - 🌐 Navegador web moderno (Chrome, Firefox, Safari, Edge)
 - 📁 Archivos del proyecto descargados
 
-**Pasos de Instalación:**
+**Pasos:**
 
 1.  **📂 Ubicar el proyecto**
     ```
     📁 01-Calculadora/
     ├── 📄 index.html
-    ├── 🎨 style.css  
+    ├── 🎨 style.css  
     └── ⚙️ script.js
     ```
 
@@ -137,3 +255,40 @@ El éxito en la generación de este proyecto valida que un **diseño de prompt m
 3.  **🎉 ¡Listo para usar!**
     * La calculadora se abrirá en tu navegador
     * Todas las funcionalidades están disponibles inmediatamente
+
+### 🧪 **Ejecutar los Tests Unitarios**
+
+**Prerrequisitos:**
+- 🟢 Node.js instalado en tu sistema
+- 📁 Todos los archivos del proyecto
+
+**Pasos:**
+
+1.  **📂 Abrir terminal en el directorio del proyecto**
+    ```bash
+    cd ruta/hacia/01-Calculadora
+    ```
+
+2.  **📦 Instalar dependencias (solo la primera vez)**
+    ```bash
+    npm install
+    ```
+
+3.  **🧪 Ejecutar tests**
+    ```bash
+    # Tests básicos
+    npm test
+    
+    # Tests con modo watch (se ejecutan automáticamente al cambiar código)
+    npm run test:watch
+    
+    # Tests con reporte de cobertura detallado
+    npm run test:coverage
+    ```
+
+4.  **📊 Ver resultados**
+    * ✅ 33 tests unitarios
+    * 📈 96.29% de cobertura de código
+    * ⚡ Ejecución en menos de 1 segundo
+
+> 💡 **¿Primera vez con Testing?** Lee nuestra [**Guía Completa de Testing Unitario**](GUIA-TESTING-UNITARIO.md) que explica paso a paso todo lo implementado.

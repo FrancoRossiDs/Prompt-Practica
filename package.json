@@ -1,0 +1,15 @@
+{
+  "name": "prompt-practica",
+  "version": "1.0.0",
+  "description": "Repositorio personal de práctica de arquitecturas de software y prompt engineering.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}

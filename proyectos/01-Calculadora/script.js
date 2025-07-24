@@ -2,114 +2,26 @@
    CALCULADORA WEB - ARQUITECTURA EN CAPAS SIMPLIFICADA
    
    SEPARACIÓN CLARA DE RESPONSABILIDADES:
-   1. CAPA DE NEGOCIO: Operaciones matemáticas puras
+   1. CAPA DE NEGOCIO: Operaciones matemáticas puras (src/calculator.js)
    2. CAPA DE LÓGICA UI: Gestión de estado de la calculadora  
    3. CAPA DE PRESENTACIÓN: Manipulación del DOM y eventos
    ===================================================== */
 
 "use strict";
 
-/* =====================================================
-   CAPA 1: LÓGICA DE NEGOCIO - OPERACIONES MATEMÁTICAS
-   Funciones puras sin dependencia del DOM
-   ===================================================== */
+// Importar funciones de cálculo desde el módulo separado
+// Nota: En entorno Node.js para tests, usamos require()
+// En el navegador, las funciones se cargan desde calculator.js incluido en HTML
+let Calculator;
 
-const Calculator = {
-    /**
-     * Suma dos números
-     * @param {number} a - Primer sumando
-     * @param {number} b - Segundo sumando  
-     * @returns {number} Resultado de la suma
-     */
-    add(a, b) {
-        return a + b;
-    },
-
-    /**
-     * Resta dos números
-     * @param {number} a - Minuendo
-     * @param {number} b - Sustraendo
-     * @returns {number} Resultado de la resta
-     */
-    subtract(a, b) {
-        return a - b;
-    },
-
-    /**
-     * Multiplica dos números
-     * @param {number} a - Primer factor
-     * @param {number} b - Segundo factor
-     * @returns {number} Resultado de la multiplicación
-     */
-    multiply(a, b) {
-        return a * b;
-    },
-
-    /**
-     * Divide dos números
-     * @param {number} a - Dividendo
-     * @param {number} b - Divisor
-     * @returns {number} Resultado de la división
-     * @throws {Error} Si el divisor es cero
-     */
-    divide(a, b) {
-        if (b === 0) {
-            throw new Error('División por cero no permitida');
-        }
-        return a / b;
-    },
-
-    /**
-     * Ejecuta una operación matemática
-     * @param {number} operand1 - Primer operando
-     * @param {string} operator - Operador (+, -, *, /)
-     * @param {number} operand2 - Segundo operando
-     * @returns {Object} {success: boolean, result: number|null, error: string|null}
-     */
-    calculate(operand1, operator, operand2) {
-        try {
-            let result;
-
-            switch (operator) {
-                case '+':
-                    result = this.add(operand1, operand2);
-                    break;
-                case '-':
-                    result = this.subtract(operand1, operand2);
-                    break;
-                case '*':
-                    result = this.multiply(operand1, operand2);
-                    break;
-                case '/':
-                    result = this.divide(operand1, operand2);
-                    break;
-                default:
-                    throw new Error('Operador no válido');
-            }
-
-            // Validar resultado
-            if (!isFinite(result) || isNaN(result)) {
-                throw new Error('Resultado matemático inválido');
-            }
-
-            // Formatear resultado para evitar problemas de precisión
-            result = Math.round(result * 1000000000) / 1000000000;
-
-            return {
-                success: true,
-                result: result,
-                error: null
-            };
-
-        } catch (error) {
-            return {
-                success: false,
-                result: null,
-                error: error.message
-            };
-        }
-    }
-};
+// Detectar si estamos en Node.js (para tests) o en el navegador
+if (typeof module !== 'undefined' && module.exports) {
+    // Estamos en Node.js - usar require
+    Calculator = require('./src/calculator');
+} else {
+    // Estamos en el navegador - usar el objeto global Calculator definido en calculator.js
+    Calculator = window.Calculator;
+}
 
 /* =====================================================
    CAPA 2: LÓGICA DE UI - GESTIÓN DE ESTADO

@@ -1,0 +1,23 @@
+{
+  "name": "calculadora-tests",
+  "version": "1.0.0",
+  "description": "Tests unitarios para la calculadora web",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": ["calculator", "testing", "jest"],
+  "author": "Franco",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  }
+}
