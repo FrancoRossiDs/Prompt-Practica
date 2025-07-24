@@ -19,10 +19,6 @@ exclude:
   - "*/package-lock.json"
   - "**/package.json"
   - "**/package-lock.json"
-  - "*.js"
-  - "*/calculator-browser.js"
-  - "*/script.js"
-  - "**/calculator.js"
   - .gitignore
   - "*/.gitignore"
   - Gemfile
@@ -32,6 +28,11 @@ exclude:
   - "**/node_modules/*.md"
   - "*/node_modules/**/*.md"
   - "**/node_modules/**/*.md"
+  # REMOVIDO: No excluir todos los .js, solo los de node_modules
+  # - "*.js"
+  # - "*/calculator-browser.js"
+  # - "*/script.js" 
+  # - "**/calculator.js"
 
 # Plugins requeridos por GitHub Pages
 plugins:
