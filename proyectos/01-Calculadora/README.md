@@ -30,15 +30,12 @@
 🎯 PROMPT MAESTRO: Calculadora Web con Testing Unitario
 
 Desarrolla una calculadora web profesional que demuestre arquitectura limpia 
-y testing unitario avanzado. El proyecto debe servir como caso de estudio 
-completo de desarrollo frontend moderno.
+y testing unitario avanzado. 
 
 ESPECIFICACIONES TÉCNICAS:
 • Tecnologías: HTML5, CSS3, JavaScript ES6+ puro, Jest
 • Arquitectura: Patrón de capas con separación completa de responsabilidades
 • Testing: Suite completa de tests unitarios con >95% cobertura
-• Deploy: Compatible con GitHub Pages
-• Documentación: README técnico profesional
 
 ARQUITECTURA REQUERIDA:
 1. CAPA DE PRESENTACIÓN: HTML/CSS responsivo y moderno
@@ -63,14 +60,10 @@ CRITERIOS DE CALIDAD:
 • Código limpio y bien documentado
 • Separación total entre lógica y presentación
 • Compatible con navegadores modernos
-• Performance optimizada (<50ms carga)
-• README técnico completo con arquitectura documentada
 
 ENTREGABLES:
 1. Aplicación web funcional y testeada
 2. Suite completa de tests automatizados
-3. Documentación técnica profesional
-4. Deploy funcional en GitHub Pages
 5. Código fuente organizado y comentado
 
 El resultado debe ser un proyecto que sirva como referencia de buenas 
