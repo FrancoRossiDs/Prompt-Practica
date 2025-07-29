@@ -3,54 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Web</title>
+    <title>Calculadora Web con API</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- CAPA DE PRESENTACIÓN: Estructura HTML -->
-    <main class="calculator-container">
+    <div class="container">
         <div class="calculator">
-            <!-- Display para mostrar números y resultados -->
-            <div class="display">
-                <div class="display-result" id="display">0</div>
+            <div class="display-container">
+                <div class="display" id="display">0</div>
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <span>Calculando...</span>
+                </div>
             </div>
             
-            <!-- Grid de botones organizados en 4x4 -->
-            <div class="buttons-grid">
-                <!-- Fila 1: Controles -->
-                <button class="btn btn-clear" data-action="clear">C</button>
-                <button class="btn btn-clear" data-action="clear-entry">CE</button>
-                <button class="btn btn-operator" data-action="backspace">⌫</button>
-                <button class="btn btn-operator" data-action="operator" data-value="/">÷</button>
+            <div class="buttons">
+                <!-- Primera fila -->
+                <button class="btn clear" onclick="clearDisplay()">C</button>
+                <button class="btn clear" onclick="backspace()">⌫</button>
+                <button class="btn operator" onclick="setOperation('/')" data-operation="divide">÷</button>
+                <button class="btn operator" onclick="setOperation('*')" data-operation="multiply">×</button>
                 
-                <!-- Fila 2: Números 7-9 -->
-                <button class="btn btn-number" data-action="number" data-value="7">7</button>
-                <button class="btn btn-number" data-action="number" data-value="8">8</button>
-                <button class="btn btn-number" data-action="number" data-value="9">9</button>
-                <button class="btn btn-operator" data-action="operator" data-value="*">×</button>
+                <!-- Segunda fila -->
+                <button class="btn number" onclick="appendToDisplay('7')">7</button>
+                <button class="btn number" onclick="appendToDisplay('8')">8</button>
+                <button class="btn number" onclick="appendToDisplay('9')">9</button>
+                <button class="btn operator" onclick="setOperation('-')" data-operation="subtract">−</button>
                 
-                <!-- Fila 3: Números 4-6 -->
-                <button class="btn btn-number" data-action="number" data-value="4">4</button>
-                <button class="btn btn-number" data-action="number" data-value="5">5</button>
-                <button class="btn btn-number" data-action="number" data-value="6">6</button>
-                <button class="btn btn-operator" data-action="operator" data-value="-">−</button>
+                <!-- Tercera fila -->
+                <button class="btn number" onclick="appendToDisplay('4')">4</button>
+                <button class="btn number" onclick="appendToDisplay('5')">5</button>
+                <button class="btn number" onclick="appendToDisplay('6')">6</button>
+                <button class="btn operator" onclick="setOperation('+')" data-operation="add">+</button>
                 
-                <!-- Fila 4: Números 1-3 -->
-                <button class="btn btn-number" data-action="number" data-value="1">1</button>
-                <button class="btn btn-number" data-action="number" data-value="2">2</button>
-                <button class="btn btn-number" data-action="number" data-value="3">3</button>
-                <button class="btn btn-operator" data-action="operator" data-value="+">+</button>
+                <!-- Cuarta fila -->
+                <button class="btn number" onclick="appendToDisplay('1')">1</button>
+                <button class="btn number" onclick="appendToDisplay('2')">2</button>
+                <button class="btn number" onclick="appendToDisplay('3')">3</button>
+                <button class="btn equals" onclick="calculate()">=</button>
                 
-                <!-- Fila 5: Cero, decimal, igual -->
-                <button class="btn btn-number btn-zero" data-action="number" data-value="0">0</button>
-                <button class="btn btn-number" data-action="decimal">.</button>
-                <button class="btn btn-equals" data-action="calculate">=</button>
+                <!-- Quinta fila -->
+                <button class="btn number zero" onclick="appendToDisplay('0')">0</button>
+                <button class="btn number" onclick="appendToDisplay('.')">.</button>
+            </div>
+            
+            <!-- Indicador de conexión -->
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-icon" id="statusIcon">🟢</span>
+                <span class="status-text" id="statusText">API Conectada</span>
             </div>
         </div>
-    </main>
-    
-    <!-- CAPA DE LÓGICA: JavaScript -->
-    <script src="calculator-browser.js"></script>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

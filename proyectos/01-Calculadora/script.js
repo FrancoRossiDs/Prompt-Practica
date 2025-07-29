@@ -9,418 +9,388 @@
 
 "use strict";
 
-// Importar funciones de cálculo desde el módulo separado
-// Nota: En entorno Node.js para tests, usamos require()
-// En el navegador, las funciones se cargan desde calculator.js incluido en HTML
-let Calculator;
+/**
+ * Calculadora Web con Integración a API RESTful
+ * 
+ * Esta calculadora consume una API backend para realizar los cálculos,
+ * proporcionando una arquitectura completamente desacoplada entre
+ * frontend y backend.
+ */
 
-// Detectar si estamos en Node.js (para tests) o en el navegador
-if (typeof module !== 'undefined' && module.exports) {
-    // Estamos en Node.js - usar require
-    Calculator = require('./src/calculator');
-} else {
-    // Estamos en el navegador - usar el objeto global Calculator definido en calculator.js
-    Calculator = window.Calculator;
+// Estado de la calculadora
+let currentInput = '';
+let previousInput = '';
+let operator = '';
+let waitingForOperand = false;
+let displayExpression = ''; // Nueva variable para mostrar la expresión completa
+
+// Configuración de la API
+const API_CONFIG = {
+    baseURL: window.location.origin, // Usa la misma URL del servidor
+    endpoints: {
+        calculate: '/api/calculate',
+        health: '/api/health'
+    },
+    timeout: 5000 // 5 segundos de timeout
+};
+
+// Elementos del DOM
+const display = document.getElementById('display');
+const loadingIndicator = document.getElementById('loadingIndicator');
+const connectionStatus = document.getElementById('connectionStatus');
+const statusIcon = document.getElementById('statusIcon');
+const statusText = document.getElementById('statusText');
+
+/**
+ * Inicialización de la aplicación
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    checkAPIConnection();
+    updateDisplay();
+    
+    // Verificar conexión cada 30 segundos
+    setInterval(checkAPIConnection, 30000);
+});
+
+/**
+ * Mapea operadores para mostrar en el display
+ * @param {string} op - Operador interno
+ * @returns {string} - Operador visual
+ */
+function getDisplayOperator(op) {
+    const operatorDisplay = {
+        '+': ' + ',
+        '-': ' − ',
+        '*': ' × ',
+        '/': ' ÷ '
+    };
+    return operatorDisplay[op] || ` ${op} `;
 }
 
-/* =====================================================
-   CAPA 2: LÓGICA DE UI - GESTIÓN DE ESTADO
-   Coordina entre la lógica de negocio y la presentación
-   ===================================================== */
-
-const CalculatorState = {
-    // Estado interno de la calculadora
-    currentValue: '0',
-    previousValue: '',
-    operator: '',
-    waitingForNewValue: false,
-    hasError: false,
-
-    /**
-     * Reinicia completamente el estado de la calculadora
-     */
-    clear() {
-        this.currentValue = '0';
-        this.previousValue = '';
-        this.operator = '';
-        this.waitingForNewValue = false;
-        this.hasError = false;
-    },
-
-    /**
-     * Limpia solo el valor actual (Clear Entry)
-     */
-    clearEntry() {
-        this.currentValue = '0';
-        this.hasError = false;
-    },
-
-    /**
-     * Maneja la entrada de números
-     * @param {string} digit - Dígito del 0 al 9
-     */
-    inputNumber(digit) {
-        // Si hay error, limpiar primero
-        if (this.hasError) {
-            this.clear();
-        }
-
-        if (this.waitingForNewValue) {
-            this.currentValue = digit;
-            this.waitingForNewValue = false;
-        } else {
-            this.currentValue = this.currentValue === '0' ? digit : this.currentValue + digit;
-        }
-    },
-
-    /**
-     * Maneja la entrada del punto decimal
-     */
-    inputDecimal() {
-        // Si hay error, limpiar primero
-        if (this.hasError) {
-            this.clear();
-        }
-
-        if (this.waitingForNewValue) {
-            this.currentValue = '0.';
-            this.waitingForNewValue = false;
-        } else if (this.currentValue.indexOf('.') === -1) {
-            this.currentValue += '.';
-        }
-    },
-
-    /**
-     * Maneja la entrada de operadores
-     * @param {string} newOperator - Operador matemático
-     */
-    inputOperator(newOperator) {
-        // No procesar operadores si hay error
-        if (this.hasError) {
-            return;
-        }
-
-        const inputValue = parseFloat(this.currentValue);
-
-        // Si no hay valor anterior, guardar el actual
-        if (this.previousValue === '') {
-            this.previousValue = inputValue;
-        } 
-        // Si ya hay un operador pendiente, calcular primero
-        else if (this.operator && !this.waitingForNewValue) {
-            const result = Calculator.calculate(this.previousValue, this.operator, inputValue);
-            
-            if (result.success) {
-                this.currentValue = this.formatDisplayValue(result.result);
-                this.previousValue = result.result;
-            } else {
-                this.setError();
-                return;
-            }
-        }
-
-        this.operator = newOperator;
-        this.waitingForNewValue = true;
-    },
-
-    /**
-     * Ejecuta el cálculo final
-     */
-    calculate() {
-        // No calcular si hay error o no hay operador
-        if (this.hasError || !this.operator || this.waitingForNewValue) {
-            return;
-        }
-
-        const result = Calculator.calculate(
-            this.previousValue,
-            this.operator,
-            parseFloat(this.currentValue)
-        );
-
-        if (result.success) {
-            this.currentValue = this.formatDisplayValue(result.result);
-            this.previousValue = '';
-            this.operator = '';
-            this.waitingForNewValue = true;
-        } else {
-            this.setError();
-        }
-    },
-
-    /**
-     * Elimina el último carácter ingresado
-     */
-    backspace() {
-        // Si hay error, limpiar en lugar de hacer backspace
-        if (this.hasError) {
-            this.clear();
-            return;
-        }
-
-        if (this.currentValue.length > 1) {
-            this.currentValue = this.currentValue.slice(0, -1);
-        } else {
-            this.currentValue = '0';
-        }
-    },
-
-    /**
-     * Establece el estado de error
-     */
-    setError() {
-        this.hasError = true;
-        this.currentValue = 'Error';
-        this.operator = '';
-        this.previousValue = '';
-        this.waitingForNewValue = false;
-    },
-
-    /**
-     * Formatea un valor para mostrarlo en el display
-     * @param {number} value - Valor a formatear
-     * @returns {string} Valor formateado
-     */
-    formatDisplayValue(value) {
-        // Limitar la longitud del display
-        const stringValue = value.toString();
-        
-        if (stringValue.length > 12) {
-            // Para números muy grandes o muy pequeños, usar notación científica
-            if (Math.abs(value) > 999999999999 || (Math.abs(value) < 0.000001 && value !== 0)) {
-                return value.toExponential(6);
-            }
-            // Para otros casos, truncar decimales
-            return value.toPrecision(12);
-        }
-        
-        return stringValue;
-    },
-
-    /**
-     * Obtiene el valor actual para mostrar en el display
-     * @returns {string} Valor para el display
-     */
-    getDisplayValue() {
-        return this.currentValue;
+/**
+ * Actualiza el contenido del display
+ */
+function updateDisplay() {
+    let displayValue = '';
+    
+    if (displayExpression) {
+        // Mostrar la expresión completa cuando está en construcción
+        displayValue = displayExpression;
+    } else if (currentInput) {
+        // Mostrar el número actual que se está ingresando
+        displayValue = currentInput;
+    } else if (previousInput) {
+        // Mostrar el resultado anterior
+        displayValue = previousInput;
+    } else {
+        // Estado inicial
+        displayValue = '0';
     }
-};
+    
+    display.textContent = displayValue;
+    display.className = 'display'; // Remover clases de error
+}
 
-/* =====================================================
-   CAPA 3: PRESENTACIÓN - INTERFAZ DE USUARIO
-   Maneja el DOM y los eventos del usuario
-   ===================================================== */
+/**
+ * Construye la expresión visual para el display
+ */
+function buildDisplayExpression() {
+    if (previousInput && operator) {
+        displayExpression = previousInput + getDisplayOperator(operator);
+        if (currentInput && !waitingForOperand) {
+            displayExpression += currentInput;
+        }
+    } else {
+        displayExpression = '';
+    }
+}
 
-const CalculatorUI = {
-    // Elementos del DOM
-    displayElement: null,
-    buttonsContainer: null,
-
-    /**
-     * Inicializa la interfaz de usuario
-     */
-    init() {
-        // Obtener referencias a elementos del DOM
-        this.displayElement = document.getElementById('display');
-        this.buttonsContainer = document.querySelector('.buttons-grid');
-
-        // Verificar que los elementos existan
-        if (!this.displayElement || !this.buttonsContainer) {
-            console.error('Error: No se pudieron encontrar los elementos necesarios del DOM');
+/**
+ * Agrega un número o punto decimal al display
+ * @param {string} value - El valor a agregar
+ */
+function appendToDisplay(value) {
+    if (waitingForOperand) {
+        currentInput = value;
+        waitingForOperand = false;
+    } else {
+        // Prevenir múltiples puntos decimales
+        if (value === '.' && currentInput.includes('.')) {
             return;
         }
-
-        // Configurar event listeners
-        this.bindEvents();
-        
-        // Mostrar el estado inicial
-        this.updateDisplay();
-
-        console.log('Calculadora inicializada correctamente');
-    },
-
-    /**
-     * Configura todos los event listeners
-     */
-    bindEvents() {
-        // Event delegation para todos los botones
-        this.buttonsContainer.addEventListener('click', (event) => {
-            if (event.target.matches('button[data-action]')) {
-                this.handleButtonClick(event.target);
-            }
-        });
-
-        // Soporte para teclado
-        document.addEventListener('keydown', (event) => {
-            this.handleKeyboardInput(event);
-        });
-    },
-
-    /**
-     * Maneja los clics en botones
-     * @param {HTMLElement} button - Botón clickeado
-     */
-    handleButtonClick(button) {
-        const action = button.dataset.action;
-        const value = button.dataset.value;
-
-        // Agregar efecto visual
-        this.addButtonFeedback(button);
-
-        // Procesar la acción
-        this.processAction(action, value);
-    },
-
-    /**
-     * Maneja la entrada por teclado
-     * @param {KeyboardEvent} event - Evento del teclado
-     */
-    handleKeyboardInput(event) {
-        const key = event.key;
-
-        // Mapeo de teclas a acciones
-        const keyActions = {
-            '0': () => this.processAction('number', '0'),
-            '1': () => this.processAction('number', '1'),
-            '2': () => this.processAction('number', '2'),
-            '3': () => this.processAction('number', '3'),
-            '4': () => this.processAction('number', '4'),
-            '5': () => this.processAction('number', '5'),
-            '6': () => this.processAction('number', '6'),
-            '7': () => this.processAction('number', '7'),
-            '8': () => this.processAction('number', '8'),
-            '9': () => this.processAction('number', '9'),
-            '.': () => this.processAction('decimal'),
-            '+': () => this.processAction('operator', '+'),
-            '-': () => this.processAction('operator', '-'),
-            '*': () => this.processAction('operator', '*'),
-            '/': () => this.processAction('operator', '/'),
-            'Enter': () => this.processAction('calculate'),
-            '=': () => this.processAction('calculate'),
-            'Escape': () => this.processAction('clear'),
-            'Backspace': () => this.processAction('backspace'),
-            'Delete': () => this.processAction('clear-entry')
-        };
-
-        if (keyActions[key]) {
-            event.preventDefault();
-            keyActions[key]();
-        }
-    },
-
-    /**
-     * Procesa una acción y actualiza el display
-     * @param {string} action - Tipo de acción
-     * @param {string} value - Valor asociado a la acción
-     */
-    processAction(action, value) {
-        try {
-            switch (action) {
-                case 'number':
-                    CalculatorState.inputNumber(value);
-                    break;
-                case 'decimal':
-                    CalculatorState.inputDecimal();
-                    break;
-                case 'operator':
-                    CalculatorState.inputOperator(value);
-                    break;
-                case 'calculate':
-                    CalculatorState.calculate();
-                    break;
-                case 'clear':
-                    CalculatorState.clear();
-                    break;
-                case 'clear-entry':
-                    CalculatorState.clearEntry();
-                    break;
-                case 'backspace':
-                    CalculatorState.backspace();
-                    break;
-                default:
-                    console.warn(`Acción no reconocida: ${action}`);
-                    return;
-            }
-
-            // Actualizar el display después de procesar la acción
-            this.updateDisplay();
-
-        } catch (error) {
-            console.error('Error procesando acción:', error);
-            CalculatorState.setError();
-            this.updateDisplay();
-        }
-    },
-
-    /**
-     * Actualiza el contenido del display
-     */
-    updateDisplay() {
-        if (this.displayElement) {
-            this.displayElement.textContent = CalculatorState.getDisplayValue();
-            
-            // Manejar estado de error visual
-            const displayContainer = this.displayElement.parentElement;
-            if (CalculatorState.hasError) {
-                displayContainer.classList.add('error');
-                // Quitar la clase de error después de la animación
-                setTimeout(() => {
-                    displayContainer.classList.remove('error');
-                }, 500);
-            }
-        }
-    },
-
-    /**
-     * Agrega feedback visual al presionar un botón
-     * @param {HTMLElement} button - Botón presionado
-     */
-    addButtonFeedback(button) {
-        button.classList.add('btn-pressed');
-        setTimeout(() => {
-            button.classList.remove('btn-pressed');
-        }, 150);
+        currentInput = currentInput === '0' ? value : currentInput + value;
     }
-};
+    
+    // Actualizar la expresión visual
+    buildDisplayExpression();
+    updateDisplay();
+}
 
-/* =====================================================
-   INICIALIZACIÓN DE LA APLICACIÓN
-   ===================================================== */
+/**
+ * Establece la operación matemática
+ * @param {string} nextOperator - El operador a usar
+ */
+function setOperation(nextOperator) {
+    const inputValue = parseFloat(currentInput);
 
-// Inicializar cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', () => {
+    if (previousInput === '' && !isNaN(inputValue)) {
+        previousInput = inputValue;
+    } else if (operator && !waitingForOperand) {
+        // Si hay una operación pendiente, ejecutarla primero
+        calculate();
+        return;
+    }
+
+    waitingForOperand = true;
+    operator = nextOperator;
+    
+    // Construir y mostrar la expresión con el operador
+    buildDisplayExpression();
+    updateDisplay();
+}
+
+/**
+ * Limpia el display y resetea el estado
+ */
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    operator = '';
+    waitingForOperand = false;
+    displayExpression = '';
+    updateDisplay();
+}
+
+/**
+ * Borra el último dígito ingresado
+ */
+function backspace() {
+    if (!waitingForOperand && currentInput !== '') {
+        currentInput = currentInput.slice(0, -1);
+        buildDisplayExpression();
+        updateDisplay();
+    }
+}
+
+/**
+ * Muestra el indicador de carga
+ */
+function showLoading() {
+    loadingIndicator.classList.add('show');
+    // Deshabilitar botones durante la carga
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => btn.disabled = true);
+}
+
+/**
+ * Oculta el indicador de carga
+ */
+function hideLoading() {
+    loadingIndicator.classList.remove('show');
+    // Rehabilitar botones
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => btn.disabled = false);
+}
+
+/**
+ * Actualiza el estado de conexión en la UI
+ * @param {boolean} isConnected - Estado de la conexión
+ * @param {string} message - Mensaje de estado
+ */
+function updateConnectionStatus(isConnected, message) {
+    if (isConnected) {
+        statusIcon.textContent = '🟢';
+        statusText.textContent = message || 'API Conectada';
+        connectionStatus.className = 'connection-status success';
+    } else {
+        statusIcon.textContent = '🔴';
+        statusText.textContent = message || 'API Desconectada';
+        connectionStatus.className = 'connection-status error';
+    }
+}
+
+/**
+ * Verifica la conexión con la API
+ */
+async function checkAPIConnection() {
     try {
-        CalculatorUI.init();
-    } catch (error) {
-        console.error('Error crítico inicializando la calculadora:', error);
+        const response = await fetch(`${API_CONFIG.baseURL}${API_CONFIG.endpoints.health}`, {
+            method: 'GET',
+            timeout: 3000
+        });
         
-        // Mostrar mensaje de error al usuario
-        document.body.innerHTML = `
-            <div style="
-                display: flex; 
-                justify-content: center; 
-                align-items: center; 
-                height: 100vh; 
-                font-family: Arial, sans-serif;
-                text-align: center;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-            ">
-                <div>
-                    <h2>Error</h2>
-                    <p>No se pudo cargar la calculadora.</p>
-                    <p>Por favor, recarga la página.</p>
-                </div>
-            </div>
-        `;
+        if (response.ok) {
+            updateConnectionStatus(true, 'API Conectada');
+        } else {
+            updateConnectionStatus(false, 'API con errores');
+        }
+    } catch (error) {
+        updateConnectionStatus(false, 'API Desconectada');
+        console.warn('API no disponible:', error.message);
+    }
+}
+
+/**
+ * Mapea los operadores del frontend a los de la API
+ * @param {string} op - Operador del frontend
+ * @returns {string} - Operador para la API
+ */
+function mapOperatorToAPI(op) {
+    const operatorMap = {
+        '+': 'add',
+        '-': 'subtract',
+        '*': 'multiply',
+        '/': 'divide'
+    };
+    return operatorMap[op];
+}
+
+/**
+ * Muestra un error en el display
+ * @param {string} message - Mensaje de error
+ */
+function showError(message) {
+    display.textContent = message;
+    display.classList.add('error');
+    
+    // Remover clase de error después de 3 segundos
+    setTimeout(() => {
+        display.classList.remove('error');
+        clearDisplay();
+    }, 3000);
+}
+
+/**
+ * Realiza la operación matemática usando la API
+ */
+async function calculate() {
+    const num1 = parseFloat(previousInput);
+    const num2 = parseFloat(currentInput);
+    const operation = mapOperatorToAPI(operator);
+
+    // Validaciones básicas del frontend
+    if (isNaN(num1) || isNaN(num2) || !operation) {
+        showError('Error: Datos inválidos');
+        return;
+    }
+
+    // Preparar payload para la API
+    const payload = {
+        operation: operation,
+        num1: num1,
+        num2: num2
+    };
+
+    try {
+        // Mostrar indicador de carga
+        showLoading();
+
+        // Crear timeout manual más compatible
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
+
+        // Realizar petición a la API
+        const response = await fetch(`${API_CONFIG.baseURL}${API_CONFIG.endpoints.calculate}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+            signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+            // Operación exitosa - mostrar resultado inmediatamente
+            const result = data.result;
+            
+            // Actualizar estado de la calculadora con el resultado
+            currentInput = result.toString();
+            previousInput = '';
+            operator = '';
+            waitingForOperand = true;
+            displayExpression = '';
+            
+            // Mostrar solo el resultado
+            updateDisplay();
+            updateConnectionStatus(true, 'Cálculo completado');
+            
+        } else {
+            // Error de la API
+            const errorMessage = data.message || data.error || 'Error desconocido';
+            showError(`Error: ${errorMessage}`);
+            updateConnectionStatus(false, 'Error en cálculo');
+        }
+
+    } catch (error) {
+        // Error de red o timeout
+        let errorMessage = 'Error de conexión';
+        
+        if (error.name === 'AbortError') {
+            errorMessage = 'Timeout: Cálculo tardó mucho';
+        } else if (error.name === 'TypeError') {
+            errorMessage = 'Error: API no disponible';
+        }
+        
+        showError(errorMessage);
+        updateConnectionStatus(false, 'Sin conexión');
+        console.error('Error en calculate():', error);
+        
+    } finally {
+        // Ocultar indicador de carga
+        hideLoading();
+    }
+}
+
+/**
+ * Manejo de eventos de teclado para mejor UX
+ */
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    
+    // Números y punto decimal
+    if (/[0-9\.]/.test(key)) {
+        appendToDisplay(key);
+    }
+    // Operadores
+    else if (['+', '-', '*', '/'].includes(key)) {
+        setOperation(key);
+    }
+    // Enter o = para calcular
+    else if (key === 'Enter' || key === '=') {
+        event.preventDefault();
+        calculate();
+    }
+    // Escape o c para limpiar
+    else if (key === 'Escape' || key.toLowerCase() === 'c') {
+        clearDisplay();
+    }
+    // Backspace para borrar
+    else if (key === 'Backspace') {
+        event.preventDefault();
+        backspace();
     }
 });
 
-// Exponer objetos para debugging en desarrollo
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    window.CalculatorDebug = {
-        Calculator,
-        CalculatorState,
-        CalculatorUI
-    };
-}
+/**
+ * Manejo de errores globales de la aplicación
+ */
+window.addEventListener('error', function(event) {
+    console.error('Error global capturado:', event.error);
+    showError('Error: Algo salió mal');
+});
+
+/**
+ * Manejo de errores de promesas no capturadas
+ */
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Promesa rechazada no manejada:', event.reason);
+    showError('Error: Operación falló');
+    event.preventDefault(); // Prevenir que aparezca en la consola
+});
+
+console.log('🧮 Calculadora Web con API cargada correctamente');
+console.log(`📡 API configurada en: ${API_CONFIG.baseURL}`);
+
