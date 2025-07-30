@@ -1,192 +1,323 @@
-# 🧮 Calculadora Web con API REST
+# 🚀 Calculadora Full-Stack: Un Caso de Estudio en Prompt Engineering
 
-Una calculadora web full-stack con arquitectura en capas, testing completo y API RESTful desarrollada con Node.js y Express.
+**Este proyecto es una demostración práctica de cómo se puede construir una aplicación full-stack compleja (Frontend, Backend API, Testing Completo) utilizando **Prompt Engineering** como metodología principal de desarrollo. Presenta una calculadora web moderna con una API RESTful y una cobertura de testing exhaustiva, generada y refinada a través de un proceso iterativo de ingeniería de prompts.**
+
+---
 
 ## 📋 Tabla de Contenidos
 
-- [Características](#características)
-- [Tecnologías](#tecnologías)
-- [Arquitectura](#arquitectura)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-- [Capturas de Pantalla](#capturas-de-pantalla)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Contribución](#contribución)
+- [🎯 Mi Viaje de Prompt Engineering](#-mi-viaje-de-prompt-engineering)
+  - [El Prompt Maestro Reestructurado](#el-prompt-maestro-reestructurado)
+  - [Técnicas de Prompt Engineering Aplicadas](#tcnicas-de-prompt-engineering-aplicadas)
+  - [Proceso Iterativo de Desarrollo (Prompts por Fases)](#proceso-iterativo-de-desarrollo-prompts-por-fases)
+  - [Reflexiones y Lecciones Aprendidas](#reflexiones-y-lecciones-aprendidas)
+- [✨ Características Destacadas](#-caractersticas-destacadas)
+- [🛠️ Tecnologías Utilizadas](#-tecnologas-utilizadas)
+- [🏗️ Arquitectura Implementada](#-arquitectura-implementada)
+- [🚀 Instalación y Uso Local](#-instalacin-y-uso-local)
+- [🔗 API Endpoints](#-api-endpoints)
+- [🧪 Testing (Unitario y de Integración)](#-testing-unitario-y-de-integracin)
+- [📸 Capturas de Pantalla](#-capturas-de-pantalla)
+- [📁 Estructura del Proyecto](#-estructura-del-proyecto)
+- [🌐 Demo en Vivo](#-demo-en-vivo)
 
-## ✨ Características
+---
 
-- **🌐 Interfaz Web Responsiva**: Calculadora funcional con diseño moderno
-- **🔗 API RESTful**: Endpoints para operaciones matemáticas
-- **🧪 Testing Completo**: Tests unitarios e integración (90%+ cobertura)
-- **🏗️ Arquitectura en Capas**: Separación clara de responsabilidades
-- **⚡ Validación Robusta**: Manejo de errores y casos límite
-- **📊 Reporting**: Cobertura de código y métricas
+## 🎯 Mi Viaje de Prompt Engineering
 
-## 🛠️ Tecnologías
+Este proyecto no es solo una calculadora; es un testimonio del poder del **Prompt Engineering** y mi capacidad para dirigir modelos de lenguaje complejos en la creación de soluciones de software robustas. El desarrollo se llevó a cabo a través de un enfoque estratégico e iterativo, guiando a la IA desde la concepción hasta el testing y la arquitectura final.
 
-### Backend
-- **Node.js** - Runtime de JavaScript
-- **Express.js** - Framework web
-- **CORS** - Manejo de políticas de origen cruzado
+### El Prompt Maestro Reestructurado
 
-### Frontend
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos modernos y responsivos
-- **JavaScript ES6+** - Lógica del cliente
+Este es el prompt final y reestructurado que encapsula todas las especificaciones y objetivos del proyecto, siendo la "visión" completa que se le comunicó a la IA para su generación:
+
+PROMPT MAESTRO: Calculadora Web Full-Stack Profesional
+1. Rol:
+Actúa como un ingeniero de software senior con experiencia en desarrollo web full-stack, arquitectura limpia y testing exhaustivo.
+
+2. Tarea:
+Desarrollar una calculadora web full-stack de nivel empresarial que demuestre arquitectura limpia, testing exhaustivo y mejores prácticas de desarrollo.
+
+3. Contexto Detallado / Requisitos:
+
+**a. Arquitectura:**
+Implementar una **Arquitectura en Capas** con separación completa de responsabilidades, tanto en el frontend como en el backend.
+
+**Flujo de Capas:**
+-   **Frontend (Capa de Presentación):** HTML/CSS/JS vanilla, responsivo, validación inicial del cliente.
+-   **API (Capa de Orquestación):** Express.js, rutas RESTful, middleware CORS, validación de entrada, orquestación de operaciones, formateo de respuestas.
+-   **Core (Capa de Lógica de Negocio):** Lógica matemática pura, sin dependencias externas, 100% testeable.
+
+**b. Tecnologías:**
+-   **Backend:** Node.js, Express.js.
+-   **Frontend:** HTML5 semántico, CSS3 moderno, JavaScript ES6+ puro.
+-   **Testing:** Jest (para testing unitario y de integración), Supertest (para testing de APIs HTTP).
+
+**c. Archivos y Estructura:**
+El proyecto debe organizarse en las siguientes carpetas y archivos clave para reflejar la arquitectura:
+-   `frontend/`: Contendrá los archivos del cliente.
+    -   `frontend/index.html`: Estructura semántica de la interfaz de usuario.
+    -   `frontend/style.css`: Estilos modernos, responsivos y optimizados para mobile-first.
+    -   `frontend/script.js`: Lógica de UI, manejo del DOM, estado y comunicación con la API.
+-   `backend/`: Contendrá los archivos del servidor.
+    -   `backend/server.js`: Punto de entrada del servidor Express.
+    -   `backend/routes/calculatorRoutes.js`: Definición de las rutas de la API.
+    -   `backend/controllers/calculatorController.js`: Lógica de manejo de las peticiones de la API.
+    -   `backend/src/calculatorLogic.js`: Módulo de lógica de negocio pura (operaciones matemáticas).
+-   `tests/`: Contendrá las pruebas automatizadas.
+    -   `tests/unit/calculator.test.js`: Pruebas unitarias para la lógica pura (`backend/src/calculatorLogic.js`).
+    -   `tests/integration/api.integration.test.js`: Pruebas de integración para los endpoints de la API.
+-   `package.json`: Configuración de dependencias y scripts npm para ambos, backend y testing.
+-   `.gitignore`: Para ignorar archivos y carpetas generados.
+-   `README.md`: Documentación profesional del proyecto.
+
+**d. Funcionalidades Específicas:**
+-   **Operaciones Core:** Suma, resta, multiplicación, división.
+-   **Funciones Avanzadas de UI:** Limpiar (C), borrar último dígito (backspace), manejo de decimales.
+-   **Interfaz de Usuario:** Intuitiva, responsive, optimizada para táctil, con feedback visual inmediato y mensajes de error claros.
+-   **Validación Crítica (Backend):**
+    -   Tipos de datos estrictos (números finitos, no NaN/Infinity).
+    -   Parámetros requeridos.
+    -   Operaciones válidas.
+    -   Manejo de división por cero.
+    -   Captura de JSON malformado.
+
+**e. Especificación de API:**
+-   `POST /api/calculate`: Realiza operaciones matemáticas.
+    -   **Request Body:** `{ "operation": "add|subtract|multiply|divide", "num1": number, "num2": number }`
+    -   **Response (Éxito):** `{ "success": true, "operation": string, "operands": object, "result": number }`
+    -   **Response (Error):** `{ "success": false, "error": string }` (con status 400 para errores de cliente).
+-   `GET /api/health`: Verifica el estado de la API.
+-   `GET /api/operations`: Lista las operaciones disponibles y sus descripciones.
+
+**f. Requisitos de Testing:**
+-   **Cobertura Obligatoria:**
+    -   Unit Tests: Todas las funciones del core (100% de cobertura).
+    -   Integration Tests: Todos los endpoints de la API (95%+ de cobertura).
+-   **Casos de Prueba:** División por cero, números límite (grandes/pequeños, decimales, negativos), errores de formato.
+-   **Scripts npm Requeridos:**
+    ```json
+    {
+      "test": "jest",
+      "test:unit": "jest tests/unit/",
+      "test:integration": "jest tests/integration/",
+      "test:coverage": "jest --coverage",
+      "test:watch": "jest --watch"
+    }
+    ```
+4. Restricciones / Consideraciones Adicionales:
+
+El código debe ser limpio, modular, bien documentado y seguir las mejores prácticas de cada tecnología (ej. convenciones de Node.js/Express, HTML5 semántico).
+
+La aplicación debe ser compatible con navegadores modernos y tener un rendimiento optimizado (<50ms carga).
+
+El diseño debe ser mobile-first y la interfaz intuitiva.
+
+No se permite el uso de frameworks o librerías externas en el frontend (solo HTML, CSS, JavaScript puro).
+
+La solución debe ser escalable y mantenible para futuras expansiones.
+
+5. Formato de Salida / Instrucciones Finales:
+Genera el código completo para todos los archivos especificados, incluyendo comentarios explicativos y configuración necesaria. Asegura que el proyecto sea funcional, testeable y directamente ejecutable. Proporciona instrucciones claras para instalar dependencias, iniciar el servidor y ejecutar las pruebas.
+
+
+### Técnicas de Prompt Engineering Aplicadas
+
+El éxito en la generación de este proyecto se basó en la aplicación consciente de diversas técnicas de Prompt Engineering:
+
+1.  **Role-Based Prompting:** Se instruyó a la IA a "actuar como un ingeniero de software senior", lo que orientó sus respuestas hacia soluciones profesionales y específicas del dominio, asegurando altos estándares de arquitectura y calidad de código.
+2.  **Task Decomposition (Descomposición de Tareas):** La complejidad del proyecto (full-stack, testing, arquitectura) fue abordada dividiendo la solicitud en sub-secciones claras (Arquitectura, Tecnologías, Archivos/Estructura, Funcionalidades, API, Testing). Esto permitió a la IA concentrarse en partes manejables, asegurando la completitud de cada componente.
+3.  **Constraint Setting (Establecimiento de Restricciones):** Se definieron límites y requisitos técnicos explícitos ("JavaScript ES6+ puro", "sin frameworks/librerías externas", "cobertura >95%"). Estas restricciones fueron cruciales para moldear la salida de la IA hacia las especificaciones exactas deseadas y evitar resultados no deseados.
+4.  **Especificidad sin Rigidez:** Aunque el prompt era muy detallado en *qué* se requería (endpoints, funcionalidades, tipos de test, estructura de carpetas), evitó dictar *cómo* debía implementarse el código línea por línea, dando a la IA libertad para generar soluciones óptimas y bien estructuradas dentro de las restricciones dadas.
+5.  **Criterios de Calidad y Entregables Explícitos:** La inclusión de secciones detalladas sobre "Criterios de Calidad" (implícitos en "Restricciones/Consideraciones Adicionales") y la expectativa de un proyecto "funcional, testeable y directamente ejecutable" elevaron el estándar del resultado, impulsando a la IA a producir código limpio, bien documentado y listo para el despliegue.
+
+### Proceso Iterativo de Desarrollo (Prompts por Fases)
+
+El proyecto no fue el resultado de un único prompt (aunque el "Prompt Maestro Reestructurado" sea el consolidado), sino de una serie de iteraciones estratégicas. Este enfoque por fases es clave para el desarrollo complejo con IA, permitiendo refinar y construir capa por capa:
+
+1.  **FASE 1: API RESTful (Backend)**
+    * **Objetivo:** Establecer la base del backend y las operaciones matemáticas puras.
+    * **Prompt de ejemplo utilizado:** "Actúa como un desarrollador backend experto en Node.js y Express. Desarrolla una API RESTful para una calculadora con endpoint POST /calculate y manejo de errores."
+
+2.  **FASE 2: Tests de Integración para la API**
+    * **Objetivo:** Asegurar la robustez y el correcto funcionamiento de la API a través de pruebas automatizadas.
+    * **Prompt de ejemplo utilizado:** "Actúa como un ingeniero de QA automatizada. Crea una suite de tests de integración para la API de calculadora usando Jest y Supertest, cubriendo operaciones válidas y errores."
+
+3.  **FASE 3: Conexión Frontend-Backend**
+    * **Objetivo:** Integrar ambas partes de la aplicación para una experiencia full-stack, haciendo que el frontend consuma la API.
+    * **Prompt de ejemplo utilizado:** "Actúa como un desarrollador frontend experimentado. Modifica la calculadora web existente para que consuma la API RESTful, utilizando `fetch` para las peticiones y manejando las respuestas en la UI."
+
+### Reflexiones y Lecciones Aprendidas
+
+Este ejercicio de desarrollo full-stack con Prompt Engineering me ha enseñado que:
+
+* **La Descomposición es Poder:** Dividir un problema grande en fases manejables es esencial. Permite a la IA concentrarse, reduce errores y facilita la depuración.
+* **La Especificación Precisa es Crucial:** Cuanto más claro sea el prompt en términos de arquitectura, tecnologías y criterios de calidad, más alineado estará el resultado con las expectativas. La minuciosidad en la definición de la estructura de archivos fue un factor clave para la organización.
+* **El Rol del Ingeniero de Prompts:** Mi rol fue más allá de "pedir código"; implicó arquitectura, diseño de pruebas, integración y un refinamiento continuo del prompt para guiar a la IA hacia una solución óptima y completa. Es una función de orquestación y dirección.
+* **Validación Cruzada por IA:** La capacidad de la IA para generar pruebas (unitarias y de integración) de alta calidad, que luego validan el mismo código que produjo, es una prueba potente de su entendimiento profundo de las especificaciones y un testimonio de mi capacidad para articular esas especificaciones de manera efectiva.
+
+Este proyecto valida mi capacidad para diseñar prompts complejos, aplicar ingeniería de prompts de manera efectiva y obtener código estructurado, organizado y funcional para aplicaciones full-stack.
+
+---
+
+## ✨ Características Destacadas
+
+Este proyecto showcase de Prompt Engineering integra múltiples funcionalidades y buenas prácticas de desarrollo:
+
+* **🌐 Interfaz Web Responsiva**: Calculadora funcional y amigable con el usuario, diseñada para adaptarse a diferentes dispositivos.
+* **🔗 API RESTful Dedicada**: Un backend en Node.js/Express que maneja todas las operaciones matemáticas, exponiéndolas a través de endpoints claros y validados.
+* **🧪 Testing Completo y Automatizado**: Implementación de tests unitarios para la lógica pura y tests de integración para la API, con una cobertura superior al 90%.
+* **🏗️ Arquitectura en Capas Limpia**: Separación explícita de responsabilidades (Presentación, UI, Lógica de Negocio, API), facilitando el mantenimiento y la escalabilidad.
+* **⚡ Validación Robusta**: Manejo inteligente de entradas, errores de usuario (ej. división por cero) y errores de API, con mensajes claros para el usuario.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### Backend (API RESTful)
+-   **Node.js**: Entorno de ejecución de JavaScript para el servidor.
+-   **Express.js**: Framework web minimalista para construir la API RESTful.
+-   **CORS**: Middleware para gestionar las políticas de seguridad de origen cruzado, permitiendo la comunicación entre el frontend y el backend desplegados en diferentes dominios.
+
+### Frontend (Interfaz de Usuario)
+-   **HTML5**: Lenguaje de marcado para la estructura semántica de la interfaz de usuario.
+-   **CSS3**: Hojas de estilo para el diseño moderno, responsividad y experiencia de usuario.
+-   **JavaScript ES6+**: Lógica del lado del cliente para la interacción con el DOM y el consumo de la API.
 
 ### Testing
-- **Jest** - Framework de testing
-- **Supertest** - Testing de APIs HTTP
-- **Coverage Reports** - Reportes de cobertura
+-   **Jest**: Framework de testing líder para JavaScript, utilizado para pruebas unitarias y de integración.
+-   **Supertest**: Librería para simular peticiones HTTP y facilitar las pruebas de integración de la API.
+-   **Coverage Reports**: Herramientas integradas en Jest para generar informes detallados sobre la cobertura de código.
 
-## 🏗️ Arquitectura
+---
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│    Frontend     │    │   Backend API   │    │  Core Logic     │
-│                 │    │                 │    │                 │
-│ • HTML/CSS/JS   │◄──►│ • Express       │◄──►│ • Calculator    │
-│ • Validación    │    │ • Routes        │    │ • Pure Functions│
-│ • UI/UX         │    │ • Controllers   │    │ • Business Logic│
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-        │                        │                        │
-        v                        v                        v
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Integration   │    │   API Testing   │    │  Unit Testing   │
-│     Tests       │    │                 │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+## 🏗️ Arquitectura Implementada
 
-### Capas del Sistema
+Este proyecto sigue una arquitectura en capas, con una clara separación entre el cliente (Frontend) y el servidor (Backend), y una segmentación interna de responsabilidades en cada lado.
 
-1. **Capa de Presentación** (`index.html`, `script.js`)
-   - Interfaz de usuario
-   - Validación frontend
-   - Comunicación con API
+┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
+│     Frontend    │         │   Backend API   │         │    Core Logic   │
+│                 │         │                 │         │                 │
+│ • HTML/CSS/JS   │◄───────►│ • Express       │◄───────►│ • Calculator    │
+│ • Validación UI │ (HTTP)  │ • Rutas         │ (Import)│ • Pure Functions│
+│ • UI/UX         │         │ • Controladores │         │ • Business Logic│
+└─────────────────┘         └─────────────────┘         └─────────────────┘
+│                           │                           │
+│                           │                           │
+v                           v                           v
+┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
+│ Integración     │         │ API Testing     │         │ Unit Testing    │
+│ (Frontend-API)  │         │ (Backend)       │         │ (Core Logic)    │
+└─────────────────┘         └─────────────────┘         └─────────────────┘
 
-2. **Capa de API** (`server.js`, `routes/`)
-   - Endpoints REST
-   - Middleware de validación
-   - Manejo de errores
 
-3. **Capa de Lógica** (`controllers/`)
-   - Validación de datos
-   - Orquestación de operaciones
-   - Formateo de respuestas
+### Descripción de las Capas
 
-4. **Capa de Negocio** (`src/calculator.js`)
-   - Operaciones matemáticas puras
-   - Sin dependencias externas
-   - Altamente testeable
+1.  **Capa de Presentación (Frontend)**:
+    * **Archivos**: `frontend/index.html`, `frontend/style.css`, `frontend/script.js`
+    * **Responsabilidad**: Interfaz de usuario, captura de eventos del DOM, validaciones frontend básicas y comunicación con la API.
 
-## 🚀 Instalación
+2.  **Capa de API (Backend - Express)**:
+    * **Archivos**: `backend/server.js`, `backend/routes/`, `backend/controllers/`
+    * **Responsabilidad**: Exponer endpoints REST (`/api/calculate`, etc.), recibir peticiones HTTP, aplicar middleware de validación, manejar errores de la API y orquestar la llamada a la lógica de negocio.
+
+3.  **Capa de Negocio (Core Logic)**:
+    * **Archivos**: `backend/src/calculatorLogic.js`
+    * **Responsabilidad**: Contiene la lógica matemática pura (suma, resta, etc.), es completamente independiente de Express o el DOM, y es altamente testeable de forma unitaria.
+
+4.  **Capa de Testing**:
+    * **Archivos**: `tests/unit/`, `tests/integration/`
+    * **Responsabilidad**: Contiene las pruebas automatizadas que verifican la correcta funcionalidad de las capas individuales (Unitarios) y la interacción entre ellas (Integración).
+
+---
+
+## 🚀 Instalación y Uso Local
+
+Para poner en marcha el proyecto en tu máquina local:
 
 ### Prerrequisitos
-- Node.js (versión 16 o superior)
-- npm (incluido con Node.js)
+-   [Node.js](https://nodejs.org/) (versión 16 o superior)
+-   [npm](https://www.npmjs.com/) (incluido con Node.js)
 
 ### Pasos
 
-1. **Clonar o descargar el proyecto**
-```bash
-cd proyectos/01-Calculadora
-```
+1.  **Clonar o descargar el proyecto:**
+    ```bash
+    # Si es parte de tu monorepo "Prompt-Practica"
+    cd proyectos/01-Calculadora
+    ```
 
-2. **Instalar dependencias**
-```bash
-npm install
-```
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
 
-3. **Verificar instalación**
-```bash
-npm test
-```
+3.  **Iniciar el servidor de desarrollo (Backend API):**
+    ```bash
+    npm run dev
+    # El servidor estará disponible en: http://localhost:3000
+    ```
+    *Asegúrate de que el servidor esté corriendo antes de usar la interfaz web.*
 
-## 💻 Uso
+4.  **Usar la Calculadora (Frontend):**
+    * Una vez que el servidor backend esté activo, simplemente abre `frontend/index.html` en tu navegador web. El frontend se conectará automáticamente a la API local.
 
-### Desarrollo
-
-```bash
-# Iniciar servidor de desarrollo
-npm run dev
-
-# El servidor estará disponible en:
-# http://localhost:3000
-```
-
-### Producción
-
-```bash
-# Iniciar servidor
-npm start
-```
-
-### Testing
-
-```bash
-# Ejecutar todos los tests
-npm test
-
-# Solo tests unitarios
-npm run test:unit
-
-# Solo tests de integración
-npm run test:integration
-
-# Tests con cobertura
-npm run test:coverage
-```
+---
 
 ## 🔗 API Endpoints
 
-### POST /api/calculate
-Realiza operaciones matemáticas.
+La API RESTful expone los siguientes endpoints para las operaciones de cálculo:
 
-**Request:**
+### `POST /api/calculate`
+Realiza operaciones matemáticas (`add`, `subtract`, `multiply`, `divide`).
+
+**Request Body (JSON):**
 ```json
 {
   "operation": "add",
   "num1": 5,
   "num2": 3
 }
-```
+Response (JSON - Éxito):
 
-**Response:**
-```json
+JSON
+
 {
   "success": true,
   "operation": "add",
   "operands": { "num1": 5, "num2": 3 },
   "result": 8
 }
-```
+Response (JSON - Error):
 
-**Operaciones soportadas:**
-- `add` - Suma
-- `subtract` - Resta
-- `multiply` - Multiplicación
-- `divide` - División
+JSON
 
-### GET /api/health
+{
+  "success": false,
+  "error": "Cannot divide by zero"
+}
+Códigos de Estado HTTP: Retorna 200 OK para operaciones exitosas, 400 Bad Request para errores de validación (ej. datos inválidos, división por cero), y 500 Internal Server Error para fallos inesperados del servidor.
+
+GET /api/health
 Verifica el estado de la API.
 
-**Response:**
-```json
+Response (JSON):
+
+JSON
+
 {
   "status": "OK",
   "message": "API de Calculadora funcionando correctamente",
-  "timestamp": "2024-01-15T10:30:00.000Z",
+  "timestamp": "2024-07-30T10:30:00.000Z",
   "version": "1.0.0"
 }
-```
+GET /api/operations
+Lista las operaciones matemáticas disponibles y sus descripciones.
 
-### GET /api/operations
-Lista operaciones disponibles.
+Response (JSON):
 
-**Response:**
-```json
+JSON
+
 {
   "operations": ["add", "subtract", "multiply", "divide"],
   "descriptions": {
@@ -196,134 +327,76 @@ Lista operaciones disponibles.
     "divide": "Divide dos números"
   }
 }
-```
+🧪 Testing (Unitario y de Integración)
+El proyecto cuenta con una robusta suite de tests automatizados, generados también con la asistencia del Prompt Engineering, garantizando la calidad y fiabilidad del código.
 
-## 🧪 Testing
+Cobertura Actual (Simulada para el ejemplo, ¡actualiza con tus datos reales!)
+Tests Unitarios: 7/7 pasando (100% de la lógica de negocio).
 
-### Cobertura Actual
-- **Tests Unitarios**: 7/7 pasando (100%)
-- **Tests de Integración**: 22/23 pasando (95.6%)
-- **Cobertura General**: >90%
+Tests de Integración: 22/23 pasando (95.6% de la API y sus interacciones).
 
-### Tipos de Test
+Cobertura General de Código: >90% (medida por Jest).
 
-#### Tests Unitarios (`tests/calculator.test.js`)
-- Operaciones matemáticas básicas
-- Casos límite (división por cero)
-- Números decimales y negativos
+Tipos de Test Implementados
+Tests Unitarios (tests/unit/calculator.test.js):
 
-#### Tests de Integración (`tests/integration/`)
-- Endpoints de API
-- Validación de datos
-- Manejo de errores
-- Casos límite y edge cases
+Enfoque: Prueban las funciones de la Capa de Negocio pura (backend/src/calculatorLogic.js) de forma aislada, garantizando que la lógica matemática central es impecable.
 
-### Ejecutar Tests
+Cobertura: Operaciones matemáticas básicas, casos límite (división por cero), números decimales y negativos.
 
-```bash
-# Suite completa
+Tests de Integración (tests/integration/api.integration.test.js):
+
+Enfoque: Verifican el correcto funcionamiento de los componentes de la Capa de API (backend/server.js, routes, controllers) y cómo interactúan entre sí y con la lógica de negocio. Simulan peticiones HTTP reales a la API.
+
+Cobertura: Endpoints de la API, validación de datos de entrada, manejo de errores y códigos de estado HTTP, casos límite y edge cases en las peticiones.
+
+Ejecutar Tests
+Bash
+
+# Ejecutar todos los tests (unitarios y de integración)
 npm test
 
-# Con watch mode
+# Ejecutar tests con modo "watch" (re-ejecuta al guardar cambios)
 npm run test:watch
 
-# Generar reporte de cobertura
+# Generar un reporte detallado de cobertura de código (se abrirá en tu navegador)
 npm run test:coverage
-```
+📸 Capturas de Pantalla
+🌐 Interfaz de Usuario
+Interfaz principal de la calculadora con un diseño limpio y moderno.
 
-## 📸 Capturas de Pantalla
+Vista de la calculadora adaptándose a diferentes tamaños de pantalla, demostrando responsividad.
 
-### 🌐 Interfaz Principal
-![Calculadora Web](screenshot/calculadora-interfaz.png)
-*Interfaz principal de la calculadora con diseño moderno y responsivo*
+⚡ Funcionalidad y Errores
+Ejemplo de una operación matemática en progreso en la interfaz.
 
-![Calculadora Responsive](screenshot/calculadora-responsive.png)
-*Vista responsive de la calculadora en diferentes tamaños de pantalla*
+Demostración del robusto manejo de errores, mostrando mensajes claros al usuario (ej. división por cero).
 
-![Calculadora Móvil](screenshot/calculadora-responsive-movil.png)
-*Interfaz optimizada para dispositivos móviles*
+🧪 Evidencia de Testing
+Muestra la salida de la consola al ejecutar la suite completa de tests unitarios y de integración con Jest.
 
-### ⚡ Funcionalidad
-![Operación](screenshot/calculadora-operacion.png)
-*Ejemplo de operación matemática en la interfaz*
+Una vista del reporte de cobertura de código generado, destacando las métricas de cubrimiento.
 
-![Operación Ejemplo](screenshot/calculadora-operacion-ejemplo.png)
-*Demostración de cálculo completado*
-
-![Resultado](screenshot/calculadora-resultado.png)
-*Visualización del resultado de una operación*
-
-![Manejo de Errores](screenshot/calculadora-error.png)
-*Manejo robusto de errores y validación*
-
-### 🧪 Testing Completo
-![Ejecución de Tests](screenshot/tests-ejecucion.png)
-*Ejecución de la suite completa de tests*
-
-![Todos los Tests](screenshot/tests-todos-npm-test.png)
-*Resultados completos de npm test - todos los tests pasando*
-
-![Cobertura Terminal](screenshot/coverage-terminal.png)
-*Reporte de cobertura mostrado en terminal*
-
-![Cobertura Detallada](screenshot/tests-coverage-terminal.png)
-*Métricas detalladas de cobertura de código*
-
-![Reporte de Cobertura](screenshot/coverage-report.png)
-*Reporte completo de cobertura con estadísticas*
-
-### 🔗 API Endpoints
-![API Operations](screenshot/api-operations-endpoint.png)
-*Lista de operaciones disponibles en la API*
-
-### 🌐 Demostración Online
-![GitHub Pages Demo](screenshot/github-pages-demo.png)
-*Calculadora funcionando en GitHub Pages - demo en vivo*
-
----
-
-## 📁 Estructura del Proyecto
-
-```
+📁 Estructura del Proyecto
 01-Calculadora/
-├── controllers/
-│   └── calculatorController.js    # Lógica de controladores
-├── routes/
-│   └── calculatorRoutes.js        # Definición de rutas
-├── src/
-│   └── calculator.js              # Lógica de negocio pura
+├── backend/
+│   ├── controllers/
+│   │   └── calculatorController.js    # Lógica para manejar las peticiones de la API
+│   ├── routes/
+│   │   └── calculatorRoutes.js        # Definición de las rutas y endpoints de la API
+│   └── src/
+│       └── calculatorLogic.js         # Módulo de lógica de negocio pura (operaciones matemáticas)
+├── frontend/
+│   ├── index.html                     # Estructura HTML de la calculadora
+│   ├── script.js                      # Lógica JavaScript para la UI y comunicación con API
+│   └── style.css                      # Estilos CSS de la calculadora
 ├── tests/
-│   ├── calculator.test.js         # Tests unitarios
-│   └── integration/
-│       └── calculator.integration.test.js  # Tests de integración
-├── coverage/                      # Reportes de cobertura (generado)
-├── node_modules/                  # Dependencias (generado)
-├── index.html                     # Frontend - HTML
-├── script.js                      # Frontend - JavaScript
-├── style.css                      # Frontend - Estilos
-├── calculator-browser.js          # Versión browser de calculator
-├── server.js                      # Servidor Express
-├── package.json                   # Configuración del proyecto
-└── README.md                      # Documentación
-```
-
-## 🎯 Características Técnicas
-
-### Validación de Datos
-- ✅ Tipos de datos (números)
-- ✅ Valores finitos (no NaN, no Infinity)
-- ✅ Parámetros requeridos
-- ✅ Operaciones válidas
-
-### Manejo de Errores
-- ✅ División por cero
-- ✅ JSON malformado
-- ✅ Rutas no encontradas
-- ✅ Métodos no soportados
-
-### Casos Límite
-- ✅ Números muy grandes/pequeños
-- ✅ Precisión decimal
-- ✅ Números negativos
-- ✅ Operaciones con cero
-
+│   ├── unit/
+│   │   └── calculator.test.js       # Tests unitarios para backend/src/calculatorLogic.js
+│   └── integration/
+│       └── api.integration.test.js  # Tests de integración para la API RESTful
+├── coverage/                      # Reportes de cobertura (generado por Jest)
+├── node_modules/                  # Dependencias del proyecto (npm install)
+├── server.js                      # Backend - Punto de entrada principal del servidor Express
+├── package.json                   # Configuración del proyecto y scripts npm
+└── README.md                      # ¡Este mismo documento!
