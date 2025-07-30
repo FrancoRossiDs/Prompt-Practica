@@ -237,38 +237,48 @@ npm run test:coverage
 ![Calculadora Web](screenshot/calculadora-interfaz.png)
 *Interfaz principal de la calculadora con diseño moderno y responsivo*
 
+![Calculadora Responsive](screenshot/calculadora-responsive.png)
+*Vista responsive de la calculadora en diferentes tamaños de pantalla*
+
+![Calculadora Móvil](screenshot/calculadora-responsive-movil.png)
+*Interfaz optimizada para dispositivos móviles*
+
+### ⚡ Funcionalidad
+![Operación](screenshot/calculadora-operacion.png)
+*Ejemplo de operación matemática en la interfaz*
+
+![Operación Ejemplo](screenshot/calculadora-operacion-ejemplo.png)
+*Demostración de cálculo completado*
+
+![Resultado](screenshot/calculadora-resultado.png)
+*Visualización del resultado de una operación*
+
+![Manejo de Errores](screenshot/calculadora-error.png)
+*Manejo robusto de errores y validación*
+
 ### 🧪 Testing Completo
-![Tests Unitarios](screenshot/tests-unitarios-completos.png)
-*Ejecución de tests unitarios - 7/7 pasando (100%)*
-
-![Tests de Integración](screenshot/tests-integracion-resultado.png)
-*Tests de integración de API - 22/23 pasando (95.6%)*
-
-![Cobertura de Tests](screenshot/tests-coverage-terminal.png)
-*Reporte de cobertura completo con métricas detalladas*
+![Ejecución de Tests](screenshot/tests-ejecucion.png)
+*Ejecución de la suite completa de tests*
 
 ![Todos los Tests](screenshot/tests-todos-npm-test.png)
-*Ejecución completa de toda la suite de tests*
+*Resultados completos de npm test - todos los tests pasando*
 
-![Reporte HTML](screenshot/coverage-html-report.png)
-*Reporte HTML interactivo de cobertura de código*
+![Cobertura Terminal](screenshot/coverage-terminal.png)
+*Reporte de cobertura mostrado en terminal*
+
+![Cobertura Detallada](screenshot/tests-coverage-terminal.png)
+*Métricas detalladas de cobertura de código*
+
+![Reporte de Cobertura](screenshot/coverage-report.png)
+*Reporte completo de cobertura con estadísticas*
 
 ### 🔗 API Endpoints
-![API Health Check](screenshot/api-health-check.png)
-*Endpoint de verificación de estado de la API*
-
-![API Calculate](screenshot/api-calculate-example.png)
-*Ejemplo de operación matemática via API*
-
 ![API Operations](screenshot/api-operations-endpoint.png)
 *Lista de operaciones disponibles en la API*
 
-### 🛠️ Desarrollo
-![Servidor Corriendo](screenshot/npm-start-servidor.png)
-*Servidor Express iniciado y listo para recibir peticiones*
-
-![Estructura del Proyecto](screenshot/estructura-proyecto-vscode.png)
-*Organización de archivos y carpetas en Visual Studio Code*
+### 🌐 Demostración Online
+![GitHub Pages Demo](screenshot/github-pages-demo.png)
+*Calculadora funcionando en GitHub Pages - demo en vivo*
 
 ---
 
