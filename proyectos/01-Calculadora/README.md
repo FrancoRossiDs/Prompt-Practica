@@ -234,7 +234,7 @@ npm run test:coverage
 ## 📸 Capturas de Pantalla
 
 ### 🌐 Interfaz Principal
-![Calculadora Web](screenshot/calculadora-interfaz-principal.png)
+![Calculadora Web](screenshot/calculadora-interfaz.png)
 *Interfaz principal de la calculadora con diseño moderno y responsivo*
 
 ### 🧪 Testing Completo
