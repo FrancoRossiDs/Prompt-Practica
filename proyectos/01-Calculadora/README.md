@@ -11,6 +11,7 @@ Una calculadora web full-stack con arquitectura en capas, testing completo y API
 - [Uso](#uso)
 - [API Endpoints](#api-endpoints)
 - [Testing](#testing)
+- [Capturas de Pantalla](#capturas-de-pantalla)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Contribución](#contribución)
 
@@ -229,6 +230,47 @@ npm run test:watch
 # Generar reporte de cobertura
 npm run test:coverage
 ```
+
+## 📸 Capturas de Pantalla
+
+### 🌐 Interfaz Principal
+![Calculadora Web](screenshots/calculadora-interfaz-principal.png)
+*Interfaz principal de la calculadora con diseño moderno y responsivo*
+
+### 🧪 Testing Completo
+![Tests Unitarios](screenshots/tests-unitarios-completos.png)
+*Ejecución de tests unitarios - 7/7 pasando (100%)*
+
+![Tests de Integración](screenshots/tests-integracion-resultado.png)
+*Tests de integración de API - 22/23 pasando (95.6%)*
+
+![Cobertura de Tests](screenshots/tests-coverage-terminal.png)
+*Reporte de cobertura completo con métricas detalladas*
+
+![Todos los Tests](screenshots/tests-todos-npm-test.png)
+*Ejecución completa de toda la suite de tests*
+
+![Reporte HTML](screenshots/coverage-html-report.png)
+*Reporte HTML interactivo de cobertura de código*
+
+### 🔗 API Endpoints
+![API Health Check](screenshots/api-health-check.png)
+*Endpoint de verificación de estado de la API*
+
+![API Calculate](screenshots/api-calculate-example.png)
+*Ejemplo de operación matemática via API*
+
+![API Operations](screenshots/api-operations-endpoint.png)
+*Lista de operaciones disponibles en la API*
+
+### 🛠️ Desarrollo
+![Servidor Corriendo](screenshots/npm-start-servidor.png)
+*Servidor Express iniciado y listo para recibir peticiones*
+
+![Estructura del Proyecto](screenshots/estructura-proyecto-vscode.png)
+*Organización de archivos y carpetas en Visual Studio Code*
+
+---
 
 ## 📁 Estructura del Proyecto
 
