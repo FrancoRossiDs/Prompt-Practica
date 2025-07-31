@@ -435,6 +435,7 @@ Ran all test suites.
 **Diseño Responsivo - Vista Desktop**
 
 *Vista de la calculadora en resolución de escritorio, demostrando la adaptabilidad del diseño.*
+
 ![Calculadora - Responsive Desktop](screenshot/calculadora-responsive.png)
 
 **Diseño Responsivo - Vista Móvil**
