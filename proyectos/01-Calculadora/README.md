@@ -428,68 +428,82 @@ Ran all test suites.
 ### 🌐 Interfaz de Usuario
 
 **Interfaz Principal**
+
 *Interfaz principal de la calculadora con un diseño limpio y moderno, mostrando el layout de botones y la pantalla de resultados.*
 ![Calculadora - Interfaz Principal](screenshot/calculadora-interfaz.png)
 
 **Diseño Responsivo - Vista Desktop**
+
 *Vista de la calculadora en resolución de escritorio, demostrando la adaptabilidad del diseño.*
 ![Calculadora - Responsive Desktop](screenshot/calculadora-responsive.png)
 
 **Diseño Responsivo - Vista Móvil**
+
 *Vista optimizada para dispositivos móviles, mostrando cómo la interfaz se adapta a pantallas más pequeñas manteniendo la usabilidad.*
 ![Calculadora - Responsive Móvil](screenshot/calculadora-responsive-movil.png)
 
 ### ⚡ Funcionalidad y Operaciones
 
 **Operación en Progreso**
+
 *Ejemplo de una operación matemática en progreso, mostrando la entrada de datos y el feedback visual.*
 ![Calculadora - Operación Ejemplo](screenshot/calculadora-operacion-ejemplo.png)
 
 **Resultado de Operación**
+
 *Demostración de una operación completada exitosamente con el resultado mostrado.*
 ![Calculadora - Operación Completada](screenshot/calculadora-operacion.png)
 
 **Visualización de Resultados**
+
 *Vista del resultado final de una operación, mostrando la claridad en la presentación de datos.*
 ![Calculadora - Resultado Final](screenshot/calculadora-resultado.png)
 
 ### 🚨 Manejo de Errores
 
 **Gestión Robusta de Errores**
+
 *Demostración del robusto sistema de manejo de errores, mostrando mensajes claros al usuario (ej. división por cero, entradas inválidas).*
 ![Calculadora - Manejo de Errores](screenshot/calculadora-error.png)
 
 ### 🔗 API RESTful
 
 **Endpoint de Operaciones**
+
 *Vista del endpoint `/api/operations` mostrando las operaciones disponibles y sus descripciones en formato JSON.*
 ![API - Endpoint Operations](screenshot/api-operations-endpoint.png)
 
 ### 🧪 Evidencia de Testing
 
 **Ejecución de Tests Completa**
+
 *Salida de la consola mostrando la ejecución exitosa de toda la suite de tests unitarios y de integración.*
 ![Tests - Ejecución Completa](screenshot/tests-ejecucion.png)
 
 **Comando npm test**
+
 *Demostración del comando `npm test` ejecutando todos los tests del proyecto con resultados detallados.*
 ![Tests - NPM Test](screenshot/tests-todos-npm-test.png)
 
 **Cobertura de Código - Terminal**
+
 *Métricas de cobertura de código mostradas en terminal, evidenciando el alto porcentaje de cobertura alcanzado.*
 ![Coverage - Terminal](screenshot/coverage-terminal.png)
 
 **Cobertura de Código - Vista Detallada**
+
 *Vista detallada de la cobertura por archivos y funciones, mostrando estadísticas específicas de testing.*
 ![Coverage - Tests Terminal](screenshot/tests-coverage-terminal.png)
 
 **Reporte de Cobertura**
+
 *Reporte visual de cobertura de código generado por Jest, mostrando métricas comprehensivas del proyecto.*
 ![Coverage - Reporte](screenshot/coverage-report.png)
 
 ### 🌐 Demo en Producción
 
 **Despliegue en GitHub Pages**
+
 *Captura del proyecto funcionando en producción a través de GitHub Pages, demostrando la funcionalidad completa en un entorno real.*
 ![Demo - GitHub Pages](screenshot/github-pages-demo.png)
 ---
