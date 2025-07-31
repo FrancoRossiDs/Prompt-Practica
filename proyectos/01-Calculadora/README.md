@@ -510,28 +510,8 @@ Ran all test suites.
 ---
 
 ## 📁 Estructura del Proyecto
-01-Calculadora/
-├── backend/
-│   ├── controllers/
-│   │   └── calculatorController.js     # Lógica para manejar las peticiones de la API
-│   ├── routes/
-│   │   └── calculatorRoutes.js         # Definición de las rutas y endpoints de la API
-│   └── src/
-│       └── calculatorLogic.js          # Módulo de lógica de negocio pura (operaciones matemáticas)
-├── frontend/
-│   ├── index.html                      # Estructura HTML de la calculadora
-│   ├── script.js                       # Lógica JavaScript para la UI y comunicación con API
-│   └── style.css                       # Estilos CSS de la calculadora
-├── tests/
-│   ├── unit/
-│   │   └── calculator.test.js          # Tests unitarios para backend/src/calculatorLogic.js
-│   └── integration/
-│       └── api.integration.test.js     # Tests de integración para la API RESTful
-├── coverage/                           # Reportes de cobertura (generado por Jest)
-├── node_modules/                       # Dependencias del proyecto (npm install)
-├── server.js                           # Backend - Punto de entrada principal del servidor Express
-├── package.json                        # Configuración del proyecto y scripts npm
-└── README.md                           # ¡Este mismo documento!
+
+![Estructura proyecto](screenshot/estructura_proyecto.png)
 
 ---
 
