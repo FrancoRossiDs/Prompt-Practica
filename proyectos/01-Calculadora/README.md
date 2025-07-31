@@ -427,11 +427,11 @@ Ran all test suites.
 
 ### 🌐 Interfaz de Usuario
 
-![Calculadora - Interfaz Principal](screenshot/calculadora-interfaz.png)
-
 **Interfaz Principal**
 
 *Interfaz principal de la calculadora con un diseño limpio y moderno, mostrando el layout de botones y la pantalla de resultados.*
+
+![Calculadora - Interfaz Principal](screenshot/calculadora-interfaz.png)
 
 ![Calculadora - Responsive Desktop](screenshot/calculadora-responsive.png)
 
